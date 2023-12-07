@@ -8,7 +8,7 @@ class WeatherApp extends StatelessWidget {
 
   Future<Map<String, dynamic>> obtenerDatos() async {
     final url = Uri.parse(
-        'http://api.openweathermap.org/data/2.5/weather?q=$ciudad&appid=$apiKey');
+        'https://api.openweathermap.org/data/2.5/weather?id=3128760&appid=dec2ad672dc93aaa3ee95f13fe74b5d1');
     final respuesta = await http.get(url);
 
     if (respuesta.statusCode == 200) {
