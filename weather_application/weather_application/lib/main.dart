@@ -6,6 +6,8 @@ class WeatherApp extends StatelessWidget {
   final String apiKey = 'TU_CLAVE_DE_API';
   final String ciudad = 'TuCiudad';
 
+  const WeatherApp({super.key});
+
   Future<Map<String, dynamic>> obtenerDatos() async {
     final url = Uri.parse(
         'https://api.openweathermap.org/data/2.5/weather?id=3128760&appid=dec2ad672dc93aaa3ee95f13fe74b5d1');
@@ -27,13 +29,13 @@ class WeatherApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Weather App'),
+          title: const Text('Weather App'),
         ),
         body: FutureBuilder(
           future: obtenerDatos(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             } else if (snapshot.hasError) {
               return Text('Error: ${snapshot.error}');
             } else {
@@ -50,4 +52,6 @@ class WeatherApp extends StatelessWidget {
   }
 }
 
-void main() => runApp(WeatherApp());
+void main() {
+  runApp(const WeatherApp());
+}
