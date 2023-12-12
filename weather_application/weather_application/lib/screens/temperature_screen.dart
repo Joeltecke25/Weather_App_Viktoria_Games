@@ -8,12 +8,13 @@ class TempScreen extends StatelessWidget{
   Widget build (BuildContext context){
     return Container(
       decoration: const BoxDecoration(
-        gradient: RadialGradient(
+        gradient: LinearGradient(
           colors: [
-            Color.fromARGB(255, 15, 119, 205),
-            Color.fromARGB(255, 1, 20, 40),
+            Color.fromARGB(255, 37, 152, 247),
+            Color.fromARGB(255, 253, 140, 47),
           ],
-          radius: 1.0,
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
         ),
       ),
       child: const Column(
