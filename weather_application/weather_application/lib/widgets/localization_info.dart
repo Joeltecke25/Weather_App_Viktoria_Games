@@ -14,12 +14,19 @@ class LocationInfoWidget extends StatelessWidget {
         children: [
           Text(
             'Barcelona',
-            style: TextStyle(color: Colors.white, fontSize: 30),
+            style: TextStyle(
+              color: Colors.white, 
+              fontSize: 30, 
+              decoration: TextDecoration.none
+            ),
           ),
           SizedBox(height: 10),
           Text(
             'Spain | 14:33 | GMT+1',
-            style: TextStyle(color: Colors.white, fontSize: 16),
+            style: TextStyle(color: Colors.white, 
+            fontSize: 16,
+            decoration: TextDecoration.none,
+            ),
           ),
         ],
       ),
