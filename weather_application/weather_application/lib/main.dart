@@ -6,15 +6,15 @@ class TempScreen extends StatefulWidget {
   const TempScreen({Key? key}) : super(key: key);
 
   @override
-  _TempScreenState createState() => _TempScreenState();
+  TempScreenState createState() => TempScreenState();
 }
 
-class _TempScreenState extends State<TempScreen> {
+class TempScreenState extends State<TempScreen> {
   // Replace 'YOUR_API_KEY' with your actual API key
   final String apiKey = '4c4fd46742msh181fec80b59613ep1a3301jsn22e6ca3acd5d';
 
   // Replace 'CITY_NAME' and 'COUNTRY_CODE' with the city and country for which you want the forecast
-  final String city = 'Barcelona';
+  final String city = 'Madrid';
   final String country = 'Spain';
 
   // Number of days of forecast required (between 1 and 14)
@@ -22,6 +22,10 @@ class _TempScreenState extends State<TempScreen> {
 
   // Weather data
   Map<String, dynamic>? weatherData;
+
+  // Loading and error states
+  bool isLoading = true;
+  bool hasError = false;
 
   @override
   void initState() {
@@ -39,12 +43,22 @@ class _TempScreenState extends State<TempScreen> {
       if (response.statusCode == 200) {
         setState(() {
           weatherData = json.decode(response.body);
+          isLoading = false;
+          hasError = false;
         });
       } else {
         print('Error ${response.statusCode}: ${response.body}');
+        setState(() {
+          isLoading = false;
+          hasError = true;
+        });
       }
     } catch (error) {
       print('Error: $error');
+      setState(() {
+        isLoading = false;
+        hasError = true;
+      });
     }
   }
 
@@ -55,15 +69,18 @@ class _TempScreenState extends State<TempScreen> {
         title: const Text('Weather App'),
       ),
       body: Center(
-        child: weatherData != null
-            ? Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('Temperature: ${weatherData!['current']['temp_c']}°C'),
-                  // Add more widgets to display additional weather information
-                ],
-              )
-            : const CircularProgressIndicator(),
+        child: isLoading
+            ? CircularProgressIndicator()
+            : hasError
+                ? Text('Error fetching data. Please try again.')
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Temperature: Max ${weatherData!['forecast']['forecastday'][0]['day']['maxtemp_c']}°C, Min ${weatherData!['forecast']['forecastday'][0]['day']['mintemp_c']}°C',
+                      ),
+                    ],
+                  ),
       ),
     );
   }
