@@ -10,22 +10,20 @@ class TempScreen extends StatefulWidget {
 }
 
 class TempScreenState extends State<TempScreen> {
-  // Replace 'YOUR_API_KEY' with your actual API key
-  final String apiKey = '4c4fd46742msh181fec80b59613ep1a3301jsn22e6ca3acd5d';
-
-  // Replace 'CITY_NAME' and 'COUNTRY_CODE' with the city and country for which you want the forecast
+  final String apiKey = '1c4057f43dmshc4e277b6f25e4e6p14c4b6jsn61e03915c3e1';
   final String city = 'Madrid';
   final String country = 'Spain';
-
-  // Number of days of forecast required (between 1 and 14)
   final int days = 5;
 
-  // Weather data
   Map<String, dynamic>? weatherData;
-
-  // Loading and error states
   bool isLoading = true;
   bool hasError = false;
+  String errorMessage = '';
+
+  Map<String, String> headers = {
+    'X-RapidAPI-Key': 'YOUR_RAPIDAPI_KEY',
+    'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com',
+  };
 
   @override
   void initState() {
@@ -35,10 +33,16 @@ class TempScreenState extends State<TempScreen> {
 
   Future<void> fetchWeatherData() async {
     final String apiUrl =
-        'http://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$city&days=$days';
+        'https://weatherapi-com.p.rapidapi.com/forecast.json?q=$city&days=$days';
 
     try {
-      final response = await http.get(Uri.parse(apiUrl));
+      final response = await http.get(
+        Uri.parse(apiUrl),
+        headers: {
+          'X-RapidAPI-Key': apiKey,
+          'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com',
+        },
+      );
 
       if (response.statusCode == 200) {
         setState(() {
@@ -48,18 +52,41 @@ class TempScreenState extends State<TempScreen> {
         });
       } else {
         print('Error ${response.statusCode}: ${response.body}');
-        setState(() {
-          isLoading = false;
-          hasError = true;
-        });
+
+        // Handle specific error codes
+        handleApiError(response.statusCode);
       }
     } catch (error) {
       print('Error: $error');
       setState(() {
         isLoading = false;
         hasError = true;
+        errorMessage = 'Error fetching data. Please try again.';
       });
     }
+  }
+
+  // Function to handle specific API error codes
+  void handleApiError(int statusCode) {
+    switch (statusCode) {
+      case 401:
+        errorMessage = 'API key not provided or invalid.';
+        break;
+      case 400:
+        errorMessage = 'Invalid request. Check your parameters.';
+        break;
+      case 403:
+        errorMessage =
+            'API key has exceeded calls per month quota or has been disabled.';
+        break;
+      default:
+        errorMessage = 'An error occurred. Please try again later.';
+    }
+
+    setState(() {
+      isLoading = false;
+      hasError = true;
+    });
   }
 
   @override
@@ -72,7 +99,7 @@ class TempScreenState extends State<TempScreen> {
         child: isLoading
             ? CircularProgressIndicator()
             : hasError
-                ? Text('Error fetching data. Please try again.')
+                ? Text(errorMessage)
                 : Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
