@@ -1,36 +1,76 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:weather_application/screens/temperature_screen.dart';
 
-void main() {
-  runApp(const WeatherApp());
+class TempScreen extends StatefulWidget {
+  const TempScreen({Key? key}) : super(key: key);
+
+  @override
+  _TempScreenState createState() => _TempScreenState();
 }
 
-class WeatherApp extends StatelessWidget {
-  final String apiKey = 'TU_CLAVE_DE_API';
-  final String ciudad = 'TuCiudad';
+class _TempScreenState extends State<TempScreen> {
+  // Replace 'YOUR_API_KEY' with your actual API key
+  final String apiKey = '4c4fd46742msh181fec80b59613ep1a3301jsn22e6ca3acd5d';
 
-  const WeatherApp({super.key});
+  // Replace 'CITY_NAME' and 'COUNTRY_CODE' with the city and country for which you want the forecast
+  final String city = 'Barcelona';
+  final String country = 'Spain';
 
-  Future<Map<String, dynamic>> obtenerDatos() async {
-    final url = Uri.parse(
-        'https://api.openweathermap.org/data/2.5/weather?id=3128760&appid=dec2ad672dc93aaa3ee95f13fe74b5d1');
-    final respuesta = await http.get(url);
+  // Number of days of forecast required (between 1 and 14)
+  final int days = 5;
 
-    if (respuesta.statusCode == 200) {
-      // Decodifica la respuesta JSON
-      return json.decode(respuesta.body);
-    } else {
-      // Maneja errores aquí
-      throw Exception('Error al cargar los datos');
+  // Weather data
+  Map<String, dynamic>? weatherData;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchWeatherData();
+  }
+
+  Future<void> fetchWeatherData() async {
+    final String apiUrl =
+        'http://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$city&days=$days';
+
+    try {
+      final response = await http.get(Uri.parse(apiUrl));
+
+      if (response.statusCode == 200) {
+        setState(() {
+          weatherData = json.decode(response.body);
+        });
+      } else {
+        print('Error ${response.statusCode}: ${response.body}');
+      }
+    } catch (error) {
+      print('Error: $error');
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: TempScreen(),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Weather App'),
+      ),
+      body: Center(
+        child: weatherData != null
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Temperature: ${weatherData!['current']['temp_c']}°C'),
+                  // Add more widgets to display additional weather information
+                ],
+              )
+            : const CircularProgressIndicator(),
+      ),
     );
   }
+}
+
+void main() {
+  runApp(const MaterialApp(
+    home: TempScreen(),
+  ));
 }
