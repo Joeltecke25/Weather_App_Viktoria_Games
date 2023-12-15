@@ -8,33 +8,37 @@ class TempScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            Color.fromARGB(255, 37, 152, 247),
-            Color.fromARGB(255, 253, 140, 47),
-          ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(16.0),
-        child: const Stack(
-          alignment: Alignment.topCenter,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Scaffold(
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                Color.fromARGB(255, 37, 152, 247),
+                Color.fromARGB(255, 253, 140, 47),
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(16.0),
+            child: const Stack(
+              alignment: Alignment.topCenter,
               children: [
-                GoBackButton(),
-                SizedBox(width: 30.0),
-                SizedBox(width: 30.0),
+                LocationInfoWidget(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GoBackButton(),
+                  ],
+                ),
               ],
             ),
-            LocationInfoWidget(),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

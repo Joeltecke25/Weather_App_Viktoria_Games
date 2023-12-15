@@ -7,7 +7,7 @@ class LocationInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 500,
+      width: 300,
       height: 100,
       padding: const EdgeInsets.all(16.0),
       child: const Column(
