@@ -17,7 +17,7 @@ class TempScreen extends StatelessWidget {
 
     const TextStyle numberTextStyle = TextStyle(
       color: Colors.white,
-      fontSize: 230,
+      fontSize: 250,
       decoration: TextDecoration.none,
     );
 
@@ -53,7 +53,7 @@ class TempScreen extends StatelessWidget {
           ),
           Container(
             alignment: Alignment.topCenter,
-            margin: const EdgeInsets.only(top: 110.0),
+            margin: const EdgeInsets.only(top: 140.0),
             child: const Column(
               children: [
                 Text(
@@ -64,7 +64,6 @@ class TempScreen extends StatelessWidget {
                   '9º',
                   style: numberTextStyle,
                 ),
-                IcaWidget(),
               ],
             ),
           ),
