@@ -7,7 +7,8 @@ class LocationInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
+      width: 500,
+      height: 100,
       padding: const EdgeInsets.all(16.0),
       child: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -16,7 +17,7 @@ class LocationInfoWidget extends StatelessWidget {
             'Barcelona',
             style: TextStyle(
               color: Colors.white, 
-              fontSize: 30, 
+              fontSize: 25, 
               decoration: TextDecoration.none
             ),
           ),
@@ -24,7 +25,7 @@ class LocationInfoWidget extends StatelessWidget {
           Text(
             'Spain | 14:33 | GMT+1',
             style: TextStyle(color: Colors.white, 
-            fontSize: 16,
+            fontSize: 14,
             decoration: TextDecoration.none,
             ),
           ),

@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:weather_application/screens/temperature_screen.dart';
 
 class TempApp extends StatefulWidget {
-  const TempApp({Key? key}) : super(key: key);
+  const TempApp({super.key});
 
   @override
   TempScreenState createState() => TempScreenState();

@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:weather_application/widgets/localization_info.dart';
 import 'package:weather_application/widgets/back_button.dart';
 
-class TempScreen extends StatelessWidget{
+class TempScreen extends StatelessWidget {
   const TempScreen({super.key});
 
+
   @override
-  Widget build (BuildContext context){
+  Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(
@@ -18,12 +19,22 @@ class TempScreen extends StatelessWidget{
           end: Alignment.bottomCenter,
         ),
       ),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          LocationInfoWidget(),
-        ],
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        child: const Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                GoBackButton(),
+                SizedBox(width: 30.0),
+                SizedBox(width: 30.0),
+              ],
+            ),
+            LocationInfoWidget(),
+          ],
+        ),
       ),
     );
   }

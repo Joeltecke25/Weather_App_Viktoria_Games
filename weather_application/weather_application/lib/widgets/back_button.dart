@@ -7,12 +7,12 @@ class GoBackButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SafeArea(
       child: Padding(
-        padding: EdgeInsets.all(4),
+        padding: EdgeInsets.all(18),
         child: Row(
           children: [
             Icon(
-              Icons.arrow_back_ios,
-              size: 30,
+              Icons.arrow_back_rounded,
+              size: 50,
               color: Color.fromARGB(255, 255, 255, 255),
             ),
           ],
