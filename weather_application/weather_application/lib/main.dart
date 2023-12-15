@@ -1,15 +1,16 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:weather_application/screens/temperature_screen.dart';
 
-class TempScreen extends StatefulWidget {
-  const TempScreen({Key? key}) : super(key: key);
+class TempApp extends StatefulWidget {
+  const TempApp({Key? key}) : super(key: key);
 
   @override
   TempScreenState createState() => TempScreenState();
 }
 
-class TempScreenState extends State<TempScreen> {
+class TempScreenState extends State<TempApp> {
   final String apiKey = '1c4057f43dmshc4e277b6f25e4e6p14c4b6jsn61e03915c3e1';
   final String city = 'Madrid';
   final String country = 'Spain';
@@ -51,12 +52,14 @@ class TempScreenState extends State<TempScreen> {
           hasError = false;
         });
       } else {
+        // ignore: avoid_print
         print('Error ${response.statusCode}: ${response.body}');
 
         // Handle specific error codes
         handleApiError(response.statusCode);
       }
     } catch (error) {
+      // ignore: avoid_print
       print('Error: $error');
       setState(() {
         isLoading = false;
@@ -97,7 +100,7 @@ class TempScreenState extends State<TempScreen> {
       ),
       body: Center(
         child: isLoading
-            ? CircularProgressIndicator()
+            ? const CircularProgressIndicator()
             : hasError
                 ? Text(errorMessage)
                 : Column(
