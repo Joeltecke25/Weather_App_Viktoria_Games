@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:weather_application/widgets/localization_info.dart';
 import 'package:weather_application/widgets/back_button.dart';
 import 'package:weather_application/widgets/ica_box.dart';
+import 'package:weather_application/widgets/temperature_info.dart';
+
 
 class TempScreen extends StatelessWidget {
   final Map<String, dynamic>? weatherData;
@@ -68,6 +70,17 @@ class TempScreen extends StatelessWidget {
                   style: numberTextStyle,
                 ),
                 const IcaWidget(),
+                const SizedBox(height: 20),
+                const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InfoRow('Max ', '12º', Colors.white, Colors.red),
+                    SizedBox(width: 25),
+                    InfoRow('Min ', '7º', Colors.white, Colors.blue),
+                    SizedBox(width: 25),
+                    InfoRow('Feels like ', '7º', Colors.white, Color.fromARGB(255, 58, 58, 58)),
+                  ],
+                ),
               ],
             ),
           ),
