@@ -16,10 +16,15 @@ class TempScreenState extends State<TempApp> {
   final String country = 'Spain';
   final int days = 5;
 
-  Map<String, dynamic>? weatherData;
+  Map<String, dynamic>? futureweatherData;
   bool isLoading = true;
   bool hasError = false;
   String errorMessage = '';
+
+  Map<String, dynamic>? currentWeatherData;
+  bool currentisLoading = true;
+  bool currenthasError = false;
+  String currenterrorMessage = '';
 
   Map<String, String> headers = {
     'X-RapidAPI-Key': 'YOUR_RAPIDAPI_KEY',
@@ -47,7 +52,7 @@ class TempScreenState extends State<TempApp> {
 
       if (response.statusCode == 200) {
         setState(() {
-          weatherData = json.decode(response.body);
+          futureweatherData = json.decode(response.body);
           isLoading = false;
           hasError = false;
         });
@@ -65,6 +70,35 @@ class TempScreenState extends State<TempApp> {
         isLoading = false;
         hasError = true;
         errorMessage = 'Error fetching data. Please try again.';
+      });
+    }
+  }
+
+  Future<void> fetchCurrentWeatherData() async {
+    final String currentApiUrl =
+        'https://weatherapi-com.p.rapidapi.com/current.json?q=$city';
+
+    try {
+      final response = await http.get(
+        Uri.parse(currentApiUrl),
+        headers: headers,
+      );
+
+      if (response.statusCode == 200) {
+        setState(() {
+          currentWeatherData = json.decode(response.body);
+        });
+      } else {
+        print('Error ${response.statusCode}: ${response.body}');
+        handleApiError(response.statusCode);
+      }
+    } catch (error) {
+      print('Error: $error');
+      setState(() {
+        currentisLoading = false;
+        currenthasError = true;
+        currenterrorMessage =
+            'Error fetching current weather data. Please try again.';
       });
     }
   }
@@ -104,7 +138,7 @@ class TempScreenState extends State<TempApp> {
                   child: Text(errorMessage),
                 )
               : TempScreen(
-                  weatherData: weatherData,
+                  weatherData: futureweatherData,
                 ),
     );
   }

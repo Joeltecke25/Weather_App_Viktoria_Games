@@ -22,9 +22,11 @@ class TempScreen extends StatelessWidget {
       decoration: TextDecoration.none,
     );
 
-    String? temperature = weatherData?['forecast']['forecastday'][0]['day']
+    String? temperature = weatherData?['current']['temp_c']?.toString();
+
+    /*String? temperature = weatherData?['forecast']['forecastday'][0]['day']
             ['avgtemp_c']
-        ?.toString();
+        ?.toString();*/
 
     return Scaffold(
       body: Stack(
