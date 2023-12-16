@@ -94,30 +94,12 @@ class TempScreenState extends State<TempApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Weather App'),
-      ),
-      body: Center(
-        child: isLoading
-            ? const CircularProgressIndicator()
-            : hasError
-                ? Text(errorMessage)
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Temperature: Max ${weatherData!['forecast']['forecastday'][0]['day']['maxtemp_c']}°C, Min ${weatherData!['forecast']['forecastday'][0]['day']['mintemp_c']}°C',
-                      ),
-                    ],
-                  ),
-      ),
-    );
+    return TempScreen();
   }
 }
 
 void main() {
   runApp(const MaterialApp(
-    home: TempScreen(),
+    home: TempApp(), // Pass the initial value as needed
   ));
 }
