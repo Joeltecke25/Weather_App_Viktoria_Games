@@ -14,13 +14,13 @@ class TempScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const TextStyle temperatureTextStyle = TextStyle(
       color: Colors.white,
-      fontSize: 45,
+      fontSize: 40,
       decoration: TextDecoration.none,
     );
 
     const TextStyle numberTextStyle = TextStyle(
       color: Colors.white,
-      fontSize: 230,
+      fontSize: 200,
       decoration: TextDecoration.none,
     );
 

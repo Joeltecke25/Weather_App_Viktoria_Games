@@ -16,7 +16,7 @@ class InfoRow extends StatelessWidget {
           label,
           style: TextStyle(
             color: labelColor, 
-            fontSize: 20
+            fontSize: 22
           ),
         ),
         const SizedBox(width: 4),
