@@ -24,10 +24,6 @@ class TempScreen extends StatelessWidget {
 
     String? temperature = weatherData?['current']['temp_c']?.toString();
 
-    /*String? temperature = weatherData?['forecast']['forecastday'][0]['day']
-            ['avgtemp_c']
-        ?.toString();*/
-
     return Scaffold(
       body: Stack(
         children: [
@@ -63,15 +59,15 @@ class TempScreen extends StatelessWidget {
             margin: const EdgeInsets.only(top: 110.0),
             child: Column(
               children: [
-                Text(
+                const Text(
                   'Temperature',
                   style: temperatureTextStyle,
                 ),
                 Text(
-                  '$temperatureº', // Use the actual temperature value
+                  '$temperatureº',
                   style: numberTextStyle,
                 ),
-                IcaWidget(),
+                const IcaWidget(),
               ],
             ),
           ),

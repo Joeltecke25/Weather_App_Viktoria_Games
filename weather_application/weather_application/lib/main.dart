@@ -130,7 +130,7 @@ class TempScreenState extends State<TempApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: isLoading
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(),
             )
           : hasError
@@ -146,6 +146,6 @@ class TempScreenState extends State<TempApp> {
 
 void main() {
   runApp(const MaterialApp(
-    home: TempApp(), // Pass the initial value as needed
+    home: TempApp(),
   ));
 }
