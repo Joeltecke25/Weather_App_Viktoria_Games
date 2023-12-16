@@ -9,7 +9,7 @@ class IcaWidget extends StatelessWidget {
       width: 110,
       height: 40,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 177, 176, 176),
+        color: const Color.fromARGB(100, 207, 207, 207),
         borderRadius: BorderRadius.circular(20),
       ),
       child: const Row(

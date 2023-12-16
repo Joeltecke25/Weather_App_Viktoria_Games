@@ -5,12 +5,17 @@ class PredictionBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 100,
-      height: 100,
-      decoration: BoxDecoration(
-        color: Colors.grey,
-        borderRadius: BorderRadius.circular(10),
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      child: Container(
+        width: screenWidth - 32,
+        height: 420,
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(100, 207, 207, 207),
+          borderRadius: BorderRadius.circular(30),
+        ),
       ),
     );
   }

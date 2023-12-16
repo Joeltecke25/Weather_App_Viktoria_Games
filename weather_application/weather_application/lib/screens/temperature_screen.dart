@@ -3,6 +3,8 @@ import 'package:weather_application/widgets/localization_info.dart';
 import 'package:weather_application/widgets/back_button.dart';
 import 'package:weather_application/widgets/ica_box.dart';
 import 'package:weather_application/widgets/temperature_info.dart';
+import 'package:weather_application/widgets/prediction_widget.dart';
+
 
 
 class TempScreen extends StatelessWidget {
@@ -33,8 +35,8 @@ class TempScreen extends StatelessWidget {
             decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color.fromARGB(255, 37, 152, 247),
-                  Color.fromARGB(255, 253, 140, 47),
+                  Color.fromARGB(255, 0, 153, 255),
+                  Color.fromARGB(255, 255, 135, 37),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -81,6 +83,8 @@ class TempScreen extends StatelessWidget {
                     InfoRow('Feels like ', '7º', Colors.white, Color.fromARGB(255, 58, 58, 58)),
                   ],
                 ),
+                const SizedBox(height: 20),
+                const PredictionBox(),
               ],
             ),
           ),
