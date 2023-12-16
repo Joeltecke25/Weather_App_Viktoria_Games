@@ -4,8 +4,9 @@ import 'package:weather_application/widgets/back_button.dart';
 import 'package:weather_application/widgets/ica_box.dart';
 
 class TempScreen extends StatelessWidget {
-  const TempScreen({super.key});
+  final Map<String, dynamic>? weatherData;
 
+  const TempScreen({Key? key, required this.weatherData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,10 @@ class TempScreen extends StatelessWidget {
       fontSize: 230,
       decoration: TextDecoration.none,
     );
+
+    String? temperature = weatherData?['forecast']['forecastday'][0]['day']
+            ['avgtemp_c']
+        ?.toString();
 
     return Scaffold(
       body: Stack(
@@ -54,14 +59,14 @@ class TempScreen extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter,
             margin: const EdgeInsets.only(top: 110.0),
-            child: const Column(
+            child: Column(
               children: [
                 Text(
                   'Temperature',
                   style: temperatureTextStyle,
                 ),
                 Text(
-                  '9º',
+                  '$temperatureº', // Use the actual temperature value
                   style: numberTextStyle,
                 ),
                 IcaWidget(),

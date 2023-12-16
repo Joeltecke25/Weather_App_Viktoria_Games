@@ -94,7 +94,9 @@ class TempScreenState extends State<TempApp> {
 
   @override
   Widget build(BuildContext context) {
-    return TempScreen();
+    return TempScreen(
+      weatherData: weatherData,
+    );
   }
 }
 
