@@ -94,8 +94,18 @@ class TempScreenState extends State<TempApp> {
 
   @override
   Widget build(BuildContext context) {
-    return TempScreen(
-      weatherData: weatherData,
+    return Scaffold(
+      body: isLoading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : hasError
+              ? Center(
+                  child: Text(errorMessage),
+                )
+              : TempScreen(
+                  weatherData: weatherData,
+                ),
     );
   }
 }
