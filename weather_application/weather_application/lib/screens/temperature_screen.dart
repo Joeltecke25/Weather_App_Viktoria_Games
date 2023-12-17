@@ -5,12 +5,15 @@ import 'package:weather_application/widgets/ica_box.dart';
 import 'package:weather_application/widgets/temperature_info.dart';
 import 'package:weather_application/widgets/prediction_widget.dart';
 
-
-
 class TempScreen extends StatelessWidget {
-  final Map<String, dynamic>? weatherData;
+  final Map<String, dynamic>? futureweatherData;
+  final Map<String, dynamic>? currentWeatherData;
 
-  const TempScreen({Key? key, required this.weatherData}) : super(key: key);
+  const TempScreen(
+      {Key? key,
+      required this.futureweatherData,
+      required this.currentWeatherData})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,15 @@ class TempScreen extends StatelessWidget {
       decoration: TextDecoration.none,
     );
 
-    String? temperature = weatherData?['current']['temp_c']?.toString();
+    String? temperature = futureweatherData?['current']['temp_c']?.toString();
+    String? maxtemp = futureweatherData?['forecast']['forecastday'][0]['day']
+            ['maxtemp_c']
+        ?.toString();
+    String? mintemp = futureweatherData?['forecast']['forecastday'][0]['day']
+            ['mintemp_c']
+        ?.toString();
+    String? feelsLike =
+        futureweatherData?['current']['feelslike_c']?.toString();
 
     return Scaffold(
       body: Stack(
@@ -45,11 +56,11 @@ class TempScreen extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.all(16.0),
-            child: const Stack(
+            child: Stack(
               alignment: Alignment.topCenter,
               children: [
-                LocationInfoWidget(),
-                Row(
+                LocationInfoWidget(futureweatherData: futureweatherData),
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     GoBackButton(),
@@ -71,16 +82,17 @@ class TempScreen extends StatelessWidget {
                   '$temperatureº',
                   style: numberTextStyle,
                 ),
-                const IcaWidget(),
+                IcaWidget(futureweatherData: futureweatherData),
                 const SizedBox(height: 20),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    InfoRow('Max ', '12º', Colors.white, Colors.red),
+                    InfoRow('Max ', '$maxtempº', Colors.white, Colors.red),
                     SizedBox(width: 25),
-                    InfoRow('Min ', '7º', Colors.white, Colors.blue),
+                    InfoRow('Min ', '$mintempº', Colors.white, Colors.blue),
                     SizedBox(width: 25),
-                    InfoRow('Feels like ', '7º', Colors.white, Color.fromARGB(255, 58, 58, 58)),
+                    InfoRow('Feels like ', '$feelsLikeº', Colors.white,
+                        Color.fromARGB(255, 58, 58, 58)),
                   ],
                 ),
                 const SizedBox(height: 20),

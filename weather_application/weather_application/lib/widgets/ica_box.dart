@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
 class IcaWidget extends StatelessWidget {
-  const IcaWidget({super.key});
+  final Map<String, dynamic>? futureweatherData;
+
+  IcaWidget({Key? key, required this.futureweatherData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String? aqi = futureweatherData?['current']['air_quality']['us-epa-index']
+            ?.toString() ??
+        'N/A';
+
     return Container(
       width: 110,
       height: 40,
@@ -12,7 +18,7 @@ class IcaWidget extends StatelessWidget {
         color: const Color.fromARGB(100, 207, 207, 207),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: const Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Padding(
@@ -24,7 +30,7 @@ class IcaWidget extends StatelessWidget {
           ),
           Center(
             child: Text(
-              'ICA 42',
+              'ICA $aqi', // Use the actual AQI value
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 18,

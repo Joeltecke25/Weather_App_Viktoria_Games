@@ -39,7 +39,7 @@ class TempScreenState extends State<TempApp> {
 
   Future<void> fetchWeatherData() async {
     final String apiUrl =
-        'https://weatherapi-com.p.rapidapi.com/forecast.json?q=$city&days=$days';
+        'https://weatherapi-com.p.rapidapi.com/forecast.json?q=$city&days=$days&aqi=yes';
 
     try {
       final response = await http.get(
@@ -138,7 +138,8 @@ class TempScreenState extends State<TempApp> {
                   child: Text(errorMessage),
                 )
               : TempScreen(
-                  weatherData: futureweatherData,
+                  futureweatherData: futureweatherData,
+                  currentWeatherData: currentWeatherData,
                 ),
     );
   }
