@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class PredictionBox extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
 
-  PredictionBox({
+  const PredictionBox({
     Key? key,
     required this.futureweatherData,
   }) : super(key: key);
@@ -94,7 +94,7 @@ class PredictionBox extends StatelessWidget {
             buildTextWithSeparator('Today', '$minTempDay0º', '$maxTempDay0º'),
             buildTextWithSeparator(
                 '$weekdayDay1', '$minTempDay1º', '$maxTempDay1º'),
-            buildTextWithSeparator(
+            buildTextWithoutSeparator(
                 '$weekdayDay2', '$minTempDay2º', '$maxTempDay2º'),
           ],
         ),
@@ -135,7 +135,7 @@ class PredictionBox extends StatelessWidget {
       children: [
         Padding(
           padding:
-              const EdgeInsets.only(left: 30, top: 14, bottom: 14, right: 30),
+              const EdgeInsets.only(left: 30, top: 20, bottom: 20, right: 30),
           child: Container(
             alignment: Alignment.center,
             child: Row(
@@ -158,7 +158,7 @@ class PredictionBox extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  height: 5,
+                  height: 7,
                   width: 200,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(3),
@@ -181,13 +181,12 @@ class PredictionBox extends StatelessWidget {
             ),
           ),
         ),
-        if (text != 'Sun')
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20),
-            height: 1,
-            width: double.infinity,
-            color: Colors.white,
-          ),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 20),
+          height: 1,
+          width: double.infinity,
+          color: Colors.white,
+        ),
       ],
     );
   }
@@ -195,7 +194,7 @@ class PredictionBox extends StatelessWidget {
   Widget buildTextWithoutSeparator(
       String text, String additionalText1, String additionalText2) {
     return Padding(
-      padding: const EdgeInsets.only(left: 30, top: 14, bottom: 14, right: 30),
+      padding: const EdgeInsets.only(left: 30, top: 20, bottom: 20, right: 30),
       child: Container(
         alignment: Alignment.center,
         child: Row(
@@ -218,7 +217,7 @@ class PredictionBox extends StatelessWidget {
               ),
             ),
             Container(
-              height: 5,
+              height: 7,
               width: 200,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(3),

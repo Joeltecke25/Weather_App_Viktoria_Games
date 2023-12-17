@@ -11,7 +11,7 @@ class LocationInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? namecity = futureweatherData?['location']['name']?.toString();
-    String? namecountry = futureweatherData?['location']['name']?.toString();
+    String? namecountry = futureweatherData?['location']['country']?.toString();
     String? currentHour =
         futureweatherData?['location']['localtime']?.toString();
 
@@ -24,16 +24,16 @@ class LocationInfoWidget extends StatelessWidget {
         children: [
           Text(
             '$namecity',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 25,
               decoration: TextDecoration.none,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
-            '$namecountry | $currentHour | GMT+1',
-            style: TextStyle(
+            '$namecountry | $currentHour',
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 14,
               decoration: TextDecoration.none,

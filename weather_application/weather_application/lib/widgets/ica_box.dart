@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class IcaWidget extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
 
-  IcaWidget({Key? key, required this.futureweatherData}) : super(key: key);
+  const IcaWidget({Key? key, required this.futureweatherData})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class IcaWidget extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.only(left: 10.0),
             child: Icon(
               Icons.eco,
@@ -30,15 +31,15 @@ class IcaWidget extends StatelessWidget {
           ),
           Center(
             child: Text(
-              'ICA $aqi', // Use the actual AQI value
-              style: TextStyle(
+              'ICA $aqi',
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
         ],
       ),
     );
