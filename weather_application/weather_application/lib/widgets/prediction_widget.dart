@@ -1,11 +1,123 @@
 import 'package:flutter/material.dart';
 
 class PredictionBox extends StatelessWidget {
-  const PredictionBox({Key? key}) : super(key: key);
+  final Map<String, dynamic>? futureweatherData;
+
+  PredictionBox({
+    Key? key,
+    required this.futureweatherData,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+
+    String getWeekdayName(int weekday) {
+      switch (weekday) {
+        case 1:
+          return 'Monday';
+        case 2:
+          return 'Tuesday';
+        case 3:
+          return 'Wednesday';
+        case 4:
+          return 'Thursday';
+        case 5:
+          return 'Friday';
+        case 6:
+          return 'Saturday';
+        case 7:
+          return 'Sunday';
+        default:
+          return '';
+      }
+    }
+
+    double? minTempDay0 = futureweatherData?['forecast']['forecastday'][0]
+            ['day']['mintemp_c']
+        ?.toDouble();
+    double? maxTempDay0 = futureweatherData?['forecast']['forecastday'][0]
+            ['day']['maxtemp_c']
+        ?.toDouble();
+    double? minTempDay1 = futureweatherData?['forecast']['forecastday'][1]
+            ['day']['mintemp_c']
+        ?.toDouble();
+    double? maxTempDay1 = futureweatherData?['forecast']['forecastday'][1]
+            ['day']['maxtemp_c']
+        ?.toDouble();
+    double? minTempDay2 = futureweatherData?['forecast']['forecastday'][2]
+            ['day']['mintemp_c']
+        ?.toDouble();
+    double? maxTempDay2 = futureweatherData?['forecast']['forecastday'][2]
+            ['day']['maxtemp_c']
+        ?.toDouble();
+    String? weekdayDay1 =
+        futureweatherData?['forecast']['forecastday'][1]['date_epoch'] != null
+            ? getWeekdayName(
+                DateTime.fromMillisecondsSinceEpoch(
+                        futureweatherData?['forecast']['forecastday'][1]
+                                ['date_epoch'] *
+                            1000)
+                    .toLocal()
+                    .weekday,
+              )
+            : null;
+
+    String? weekdayDay2 =
+        futureweatherData?['forecast']['forecastday'][2]['date_epoch'] != null
+            ? getWeekdayName(
+                DateTime.fromMillisecondsSinceEpoch(
+                        futureweatherData?['forecast']['forecastday'][2]
+                                ['date_epoch'] *
+                            1000)
+                    .toLocal()
+                    .weekday,
+              )
+            : null;
+    /*String? weekdayDay3 =
+        futureweatherData?['forecast']['forecastday'][3]['date_epoch'] != null
+            ? getWeekdayName(
+                DateTime.fromMillisecondsSinceEpoch(
+                        futureweatherData?['forecast']['forecastday'][3]
+                                ['date_epoch'] *
+                            1000)
+                    .toLocal()
+                    .weekday,
+              )
+            : null;*/
+    /*String? weekdayDay4 =
+        futureweatherData?['forecast']['forecastday'][4]['date_epoch'] != null
+            ? getWeekdayName(
+                DateTime.fromMillisecondsSinceEpoch(
+                        futureweatherData?['forecast']['forecastday'][4]
+                                ['date_epoch'] *
+                            1000)
+                    .toLocal()
+                    .weekday,
+              )
+            : null;
+    String? weekdayDay5 =
+        futureweatherData?['forecast']['forecastday'][5]['date_epoch'] != null
+            ? getWeekdayName(
+                DateTime.fromMillisecondsSinceEpoch(
+                        futureweatherData?['forecast']['forecastday'][5]
+                                ['date_epoch'] *
+                            1000)
+                    .toLocal()
+                    .weekday,
+              )
+            : null;
+    String? weekdayDay6 =
+        futureweatherData?['forecast']['forecastday'][6]['date_epoch'] != null
+            ? getWeekdayName(
+                DateTime.fromMillisecondsSinceEpoch(
+                        futureweatherData?['forecast']['forecastday'][6]
+                                ['date_epoch'] *
+                            1000)
+                    .toLocal()
+                    .weekday,
+              )
+            : null;*/
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -20,15 +132,18 @@ class PredictionBox extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 16),
-            buildRowWithIconAndText(Icons.calendar_today_rounded, '7-DAY FORECAST'),
+            buildRowWithIconAndText(
+                Icons.calendar_today_rounded, '3-DAY FORECAST'),
             const SizedBox(height: 16),
-            buildTextWithSeparator('Today', '7º', '12º'),
-            buildTextWithSeparator('Tue', '6º', '10º'),
-            buildTextWithSeparator('Wed', '7º', '11º'),
-            buildTextWithSeparator('Thu', '9º', '14º'),
-            buildTextWithSeparator('Fri', '9º', '13º'),
-            buildTextWithSeparator('Sat', '7º', '12º'),
-            buildTextWithoutSeparator('Sun', '10º', '14º'),
+            buildTextWithSeparator('Today', '$minTempDay0º', '$maxTempDay0º'),
+            buildTextWithSeparator(
+                '$weekdayDay1', '$minTempDay1º', '$maxTempDay1º'),
+            buildTextWithSeparator(
+                '$weekdayDay2', '$minTempDay2º', '$maxTempDay2º'),
+            /*buildTextWithSeparator('J', '9º', '14º'),
+            buildTextWithSeparator('A', '9º', '13º'),
+            buildTextWithSeparator('A', '7º', '12º'),
+            buildTextWithoutSeparator('A', '10º', '14º'),*/
           ],
         ),
       ),
@@ -61,12 +176,14 @@ class PredictionBox extends StatelessWidget {
     );
   }
 
-  Widget buildTextWithSeparator(String text, String additionalText1, String additionalText2) {
+  Widget buildTextWithSeparator(
+      String text, String additionalText1, String additionalText2) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.only(left: 30, top: 14, bottom: 14, right: 30),
+          padding:
+              const EdgeInsets.only(left: 30, top: 14, bottom: 14, right: 30),
           child: Container(
             alignment: Alignment.center,
             child: Row(
@@ -123,7 +240,8 @@ class PredictionBox extends StatelessWidget {
     );
   }
 
-  Widget buildTextWithoutSeparator(String text, String additionalText1, String additionalText2) {
+  Widget buildTextWithoutSeparator(
+      String text, String additionalText1, String additionalText2) {
     return Padding(
       padding: const EdgeInsets.only(left: 30, top: 14, bottom: 14, right: 30),
       child: Container(

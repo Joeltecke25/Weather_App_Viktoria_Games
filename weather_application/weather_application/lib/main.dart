@@ -14,7 +14,7 @@ class TempScreenState extends State<TempApp> {
   final String apiKey = '1c4057f43dmshc4e277b6f25e4e6p14c4b6jsn61e03915c3e1';
   final String city = 'Madrid';
   final String country = 'Spain';
-  final int days = 5;
+  final int days = 13;
 
   Map<String, dynamic>? futureweatherData;
   bool isLoading = true;
@@ -74,35 +74,6 @@ class TempScreenState extends State<TempApp> {
     }
   }
 
-  Future<void> fetchCurrentWeatherData() async {
-    final String currentApiUrl =
-        'https://weatherapi-com.p.rapidapi.com/current.json?q=$city';
-
-    try {
-      final response = await http.get(
-        Uri.parse(currentApiUrl),
-        headers: headers,
-      );
-
-      if (response.statusCode == 200) {
-        setState(() {
-          currentWeatherData = json.decode(response.body);
-        });
-      } else {
-        print('Error ${response.statusCode}: ${response.body}');
-        handleApiError(response.statusCode);
-      }
-    } catch (error) {
-      print('Error: $error');
-      setState(() {
-        currentisLoading = false;
-        currenthasError = true;
-        currenterrorMessage =
-            'Error fetching current weather data. Please try again.';
-      });
-    }
-  }
-
   // Function to handle specific API error codes
   void handleApiError(int statusCode) {
     switch (statusCode) {
@@ -137,10 +108,7 @@ class TempScreenState extends State<TempApp> {
               ? Center(
                   child: Text(errorMessage),
                 )
-              : TempScreen(
-                  futureweatherData: futureweatherData,
-                  currentWeatherData: currentWeatherData,
-                ),
+              : TempScreen(futureweatherData: futureweatherData),
     );
   }
 }

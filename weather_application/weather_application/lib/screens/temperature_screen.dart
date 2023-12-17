@@ -7,12 +7,8 @@ import 'package:weather_application/widgets/prediction_widget.dart';
 
 class TempScreen extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
-  final Map<String, dynamic>? currentWeatherData;
 
-  const TempScreen(
-      {Key? key,
-      required this.futureweatherData,
-      required this.currentWeatherData})
+  const TempScreen({Key? key, required this.futureweatherData})
       : super(key: key);
 
   @override
@@ -96,7 +92,7 @@ class TempScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 20),
-                const PredictionBox(),
+                PredictionBox(futureweatherData: futureweatherData),
               ],
             ),
           ),
