@@ -15,19 +15,19 @@ class PredictionBox extends StatelessWidget {
     String getWeekdayName(int weekday) {
       switch (weekday) {
         case 1:
-          return 'Monday';
+          return 'Mon  ';
         case 2:
-          return 'Tuesday';
+          return 'Tue    ';
         case 3:
-          return 'Wednesday';
+          return 'Wed  ';
         case 4:
-          return 'Thursday';
+          return 'Thu   ';
         case 5:
-          return 'Friday';
+          return 'Fri     ';
         case 6:
-          return 'Saturday';
+          return 'Sat    ';
         case 7:
-          return 'Sunday';
+          return 'Sun   ';
         default:
           return '';
       }
@@ -74,50 +74,6 @@ class PredictionBox extends StatelessWidget {
                     .weekday,
               )
             : null;
-    /*String? weekdayDay3 =
-        futureweatherData?['forecast']['forecastday'][3]['date_epoch'] != null
-            ? getWeekdayName(
-                DateTime.fromMillisecondsSinceEpoch(
-                        futureweatherData?['forecast']['forecastday'][3]
-                                ['date_epoch'] *
-                            1000)
-                    .toLocal()
-                    .weekday,
-              )
-            : null;*/
-    /*String? weekdayDay4 =
-        futureweatherData?['forecast']['forecastday'][4]['date_epoch'] != null
-            ? getWeekdayName(
-                DateTime.fromMillisecondsSinceEpoch(
-                        futureweatherData?['forecast']['forecastday'][4]
-                                ['date_epoch'] *
-                            1000)
-                    .toLocal()
-                    .weekday,
-              )
-            : null;
-    String? weekdayDay5 =
-        futureweatherData?['forecast']['forecastday'][5]['date_epoch'] != null
-            ? getWeekdayName(
-                DateTime.fromMillisecondsSinceEpoch(
-                        futureweatherData?['forecast']['forecastday'][5]
-                                ['date_epoch'] *
-                            1000)
-                    .toLocal()
-                    .weekday,
-              )
-            : null;
-    String? weekdayDay6 =
-        futureweatherData?['forecast']['forecastday'][6]['date_epoch'] != null
-            ? getWeekdayName(
-                DateTime.fromMillisecondsSinceEpoch(
-                        futureweatherData?['forecast']['forecastday'][6]
-                                ['date_epoch'] *
-                            1000)
-                    .toLocal()
-                    .weekday,
-              )
-            : null;*/
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -140,10 +96,6 @@ class PredictionBox extends StatelessWidget {
                 '$weekdayDay1', '$minTempDay1º', '$maxTempDay1º'),
             buildTextWithSeparator(
                 '$weekdayDay2', '$minTempDay2º', '$maxTempDay2º'),
-            /*buildTextWithSeparator('J', '9º', '14º'),
-            buildTextWithSeparator('A', '9º', '13º'),
-            buildTextWithSeparator('A', '7º', '12º'),
-            buildTextWithoutSeparator('A', '10º', '14º'),*/
           ],
         ),
       ),
