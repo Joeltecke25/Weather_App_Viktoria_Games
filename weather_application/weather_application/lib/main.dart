@@ -1,16 +1,16 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:weather_application/screens/temperature_screen.dart';
+import 'package:weather_application/screens/home_screen.dart';
 
-class TempApp extends StatefulWidget {
-  const TempApp({super.key});
+class WeatherApp extends StatefulWidget {
+  const WeatherApp({super.key});
 
   @override
-  TempScreenState createState() => TempScreenState();
+  WeatherScreenState createState() => WeatherScreenState();
 }
 
-class TempScreenState extends State<TempApp> {
+class WeatherScreenState extends State<WeatherApp> {
   final String apiKey = '1c4057f43dmshc4e277b6f25e4e6p14c4b6jsn61e03915c3e1';
   final String city = 'Madrid';
   final String country = 'Spain';
@@ -108,13 +108,13 @@ class TempScreenState extends State<TempApp> {
               ? Center(
                   child: Text(errorMessage),
                 )
-              : TempScreen(futureweatherData: futureweatherData),
+              : const HomeScreen(),
     );
   }
 }
 
 void main() {
   runApp(const MaterialApp(
-    home: TempApp(),
+    home: WeatherApp(),
   ));
 }
