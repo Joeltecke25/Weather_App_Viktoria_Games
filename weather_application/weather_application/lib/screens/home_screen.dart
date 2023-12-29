@@ -10,13 +10,13 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-                colors: [
-                  Color.fromARGB(255, 0, 153, 255),
-                  Color.fromARGB(255, 255, 135, 37),
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
+            colors: [
+              Color.fromARGB(255, 0, 153, 255),
+              Color.fromARGB(255, 255, 135, 37),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
         ),
         child: Stack(
           children: [
@@ -25,8 +25,7 @@ class HomeScreen extends StatelessWidget {
               right: 20.0,
               child: IconButton(
                 icon: const Icon(Icons.settings, color: Colors.white),
-                onPressed: () {
-                },
+                onPressed: () {},
               ),
             ),
             Positioned(
@@ -34,6 +33,24 @@ class HomeScreen extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               height: 150,
               child: const LocationInfoHomeWidget(),
+            ),
+            Positioned(
+              top: 200.0,
+              width: MediaQuery.of(context).size.width,
+              child: const Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      //Here Widget One
+                      //const sizedBox(widht: 16),
+                      //Here Widget Two
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),
