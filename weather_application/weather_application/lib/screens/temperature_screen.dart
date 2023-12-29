@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:weather_application/widgets/localization_info.dart';
-import 'package:weather_application/widgets/back_button.dart';
-import 'package:weather_application/widgets/ica_box.dart';
-import 'package:weather_application/widgets/temperature_info.dart';
-import 'package:weather_application/widgets/prediction_widget.dart';
+import 'package:weather_application/widgets/general_widgets/localization_info.dart';
+import 'package:weather_application/widgets/general_widgets/back_button.dart';
+import 'package:weather_application/widgets/temp_widgets/ica_box.dart';
+import 'package:weather_application/widgets/temp_widgets/temperature_info.dart';
+import 'package:weather_application/widgets/temp_widgets/prediction_widget.dart';
 
 class TempScreen extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
