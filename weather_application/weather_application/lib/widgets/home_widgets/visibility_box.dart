@@ -2,10 +2,15 @@ import 'package:flutter/material.dart';
 
 class VisibilityBox extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
-  const VisibilityBox({super.key, required this.futureweatherData});
+
+  const VisibilityBox({Key? key, required this.futureweatherData})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double? visibility =
+        futureweatherData?['forecast']['forecastday'][0]['day']['avgvis_km'];
+
     return Container(
       height: 180,
       width: 180,
@@ -17,7 +22,7 @@ class VisibilityBox extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
               Icon(
                 Icons.visibility,
@@ -31,13 +36,13 @@ class VisibilityBox extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8),
           Stack(
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: const LinearProgressIndicator(
-                  value: 10 / 12.0,
+                child: LinearProgressIndicator(
+                  value: visibility! / 12.0,
                   valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                   backgroundColor: Color.fromARGB(255, 221, 221, 221),
                   minHeight: 50,
@@ -45,8 +50,8 @@ class VisibilityBox extends StatelessWidget {
               ),
               Center(
                 child: Text(
-                  "${10.round()}km",
-                  style: const TextStyle(
+                  "${visibility.round()}km",
+                  style: TextStyle(
                     fontSize: 28,
                     color: Color.fromARGB(255, 0, 0, 0),
                     fontWeight: FontWeight.bold,
@@ -55,7 +60,7 @@ class VisibilityBox extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 5),
+          SizedBox(height: 5),
         ],
       ),
     );
