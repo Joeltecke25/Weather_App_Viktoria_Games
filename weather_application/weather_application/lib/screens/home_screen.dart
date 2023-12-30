@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:weather_application/widgets/home_widgets/home_location_info.dart';
+import 'package:weather_application/widgets/home_widgets/temperature_box.dart';
 import 'package:weather_application/widgets/home_widgets/weather_box.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -38,16 +39,18 @@ class HomeScreen extends StatelessWidget {
             Positioned(
               top: 200.0,
               width: MediaQuery.of(context).size.width,
-              child: SingleChildScrollView(
+              child: const SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const SizedBox(height: 10.0),
+                    SizedBox(height: 10.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         WeatherBox(),
+                        SizedBox(width: 16),
+                        TemperatureBox(),
                       ],
                     ),
                   ],

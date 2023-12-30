@@ -35,7 +35,7 @@ class WeatherBox extends StatelessWidget {
                     color: Colors.white,
                     size: 20,
                   ),
-                  SizedBox(width: 6),
+                  SizedBox(width: 8),
                   Text(
                     "Weather",
                     style: TextStyle(fontSize: 16, color: Colors.white),
