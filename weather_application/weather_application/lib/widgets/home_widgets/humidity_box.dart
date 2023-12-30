@@ -2,10 +2,17 @@ import 'package:flutter/material.dart';
 
 class HumidityBox extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
-  const HumidityBox({super.key, required this.futureweatherData});
+
+  const HumidityBox({Key? key, required this.futureweatherData})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Accessing humidity and pressure values from the API data
+    int? humidity = futureweatherData?['current']['humidity']?.toInt();
+    double? pressureMb =
+        futureweatherData?['current']['pressure_mb']?.toDouble();
+
     return Container(
       height: 180,
       width: 180,
@@ -14,10 +21,10 @@ class HumidityBox extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       padding: const EdgeInsets.all(16),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             children: [
               Icon(
                 Icons.opacity,
@@ -31,24 +38,26 @@ class HumidityBox extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
-            "73%",
-            style: TextStyle(fontSize: 50, color: Colors.white),
+            "$humidity%", // Display humidity
+            style: const TextStyle(fontSize: 50, color: Colors.white),
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Text(
-                "Pressure ",
+              const Text(
+                "Pressure",
                 style: TextStyle(
-                    fontSize: 16, color: Color.fromARGB(255, 221, 221, 221)),
+                  fontSize: 16,
+                  color: Color.fromARGB(255, 221, 221, 221),
+                ),
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               Text(
-                "1015mb",
-                style: TextStyle(fontSize: 16, color: Colors.white),
+                "$pressureMb mb", // Display pressure
+                style: const TextStyle(fontSize: 16, color: Colors.white),
               ),
             ],
           ),
