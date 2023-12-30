@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class LocationInfoHomeWidget extends StatelessWidget {
-
   const LocationInfoHomeWidget({super.key});
 
   @override

@@ -2,9 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:weather_application/widgets/home_widgets/home_location_info.dart';
 import 'package:weather_application/widgets/home_widgets/temperature_box.dart';
 import 'package:weather_application/widgets/home_widgets/weather_box.dart';
+import 'package:weather_application/widgets/home_widgets/wind_box.dart';
+import 'package:weather_application/widgets/home_widgets/humidity_box.dart';
+import 'package:weather_application/widgets/home_widgets/visibility_box.dart';
+import 'package:weather_application/widgets/home_widgets/sunset_box.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  final Map<String, dynamic>? futureweatherData;
+
+  const HomeScreen({super.key, required this.futureweatherData});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +45,7 @@ class HomeScreen extends StatelessWidget {
             Positioned(
               top: 200.0,
               width: MediaQuery.of(context).size.width,
-              child: const SingleChildScrollView(
+              child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -48,9 +54,29 @@ class HomeScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        WeatherBox(),
+                        WeatherBox(
+                          futureweatherData: futureweatherData,
+                        ),
                         SizedBox(width: 16),
-                        TemperatureBox(),
+                        TemperatureBox(futureweatherData: futureweatherData),
+                      ],
+                    ),
+                    SizedBox(height: 10.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        WindBox(futureweatherData: futureweatherData),
+                        SizedBox(width: 16),
+                        HumidityBox(futureweatherData: futureweatherData),
+                      ],
+                    ),
+                    SizedBox(height: 10.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SunsetBox(futureweatherData: futureweatherData),
+                        SizedBox(width: 16),
+                        VisibilityBox(futureweatherData: futureweatherData),
                       ],
                     ),
                   ],

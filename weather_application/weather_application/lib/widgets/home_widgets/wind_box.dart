@@ -1,27 +1,18 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
-class WeatherBox extends StatelessWidget {
+class WindBox extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
 
-  const WeatherBox({super.key, required this.futureweatherData});
+  const WindBox({Key? key, required this.futureweatherData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    String? currentWeatherCondition =
-        futureweatherData?['current']['condition']['text']?.toString();
-
-    // Define a mapping between weather conditions and corresponding icons
-    Map<String, IconData> weatherIcons = {
-      'Clear': Icons.wb_sunny,
-      'Partly cloudy': Icons.wb_cloudy,
-      'Cloudy': Icons.cloud,
-      'Overcast': Icons.cloud_queue,
-      'Mist': Icons.cloud_circle,
-      // Add more mappings as needed
-    };
-
-    // Get the corresponding icon for the current weather condition
-    IconData? weatherIcon = weatherIcons[currentWeatherCondition];
+    // Accessing wind speed and direction values from the API data
+    double? windSpeedKph =
+        futureweatherData?['current']['wind_kph']?.toDouble();
+    double? windDirectionDegree =
+        futureweatherData?['current']['wind_degree']?.toDouble();
 
     return Container(
       height: 180,
@@ -37,10 +28,15 @@ class WeatherBox extends StatelessWidget {
             top: 30,
             left: 0,
             right: 0,
-            child: Icon(
-              weatherIcon ?? Icons.cloud_outlined,
-              color: Colors.white,
-              size: 90,
+            child: Transform.rotate(
+              angle: (windDirectionDegree ?? 0) *
+                  pi /
+                  180, // Convert degrees to radians
+              child: Icon(
+                Icons.arrow_right_alt,
+                color: Colors.white,
+                size: 90,
+              ),
             ),
           ),
           Column(
@@ -49,13 +45,13 @@ class WeatherBox extends StatelessWidget {
               Row(
                 children: [
                   Icon(
-                    weatherIcon ?? Icons.cloud_download,
+                    Icons.air,
                     color: Colors.white,
                     size: 20,
                   ),
                   SizedBox(width: 8),
                   Text(
-                    "Weather",
+                    "Wind",
                     style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ],
@@ -65,8 +61,8 @@ class WeatherBox extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(
-                    "$currentWeatherCondition",
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    "$windSpeedKph km/h", // Display wind speed
+                    style: TextStyle(fontSize: 26, color: Colors.white),
                   ),
                 ),
               ),

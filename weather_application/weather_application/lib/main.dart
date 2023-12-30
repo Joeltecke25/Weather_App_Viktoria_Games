@@ -108,7 +108,7 @@ class WeatherScreenState extends State<WeatherApp> {
               ? Center(
                   child: Text(errorMessage),
                 )
-              : const HomeScreen(),
+              : HomeScreen(futureweatherData: futureweatherData),
     );
   }
 }
