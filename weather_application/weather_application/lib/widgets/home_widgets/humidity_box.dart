@@ -41,7 +41,7 @@ class HumidityBox extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             "$humidity%", // Display humidity
-            style: const TextStyle(fontSize: 50, color: Colors.white),
+            style: const TextStyle(fontSize: 60, color: Colors.white),
           ),
           const SizedBox(height: 5),
           Row(
