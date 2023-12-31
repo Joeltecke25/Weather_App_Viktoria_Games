@@ -43,8 +43,8 @@ class VisibilityBox extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 child: LinearProgressIndicator(
                   value: visibility! / 12.0,
-                  valueColor: const AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 151, 151, 151)),
-                  backgroundColor: const Color.fromARGB(255, 221, 221, 221),
+                  valueColor: const AlwaysStoppedAnimation<Color>(Color.fromARGB(255, 71, 71, 71)),
+                  backgroundColor: Color.fromARGB(255, 143, 143, 143),
                   minHeight: 70,
                 ),
               ),
