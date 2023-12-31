@@ -22,7 +22,7 @@ class VisibilityBox extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             children: [
               Icon(
                 Icons.visibility,
@@ -36,22 +36,22 @@ class VisibilityBox extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Stack(
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: LinearProgressIndicator(
                   value: visibility! / 12.0,
-                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                  backgroundColor: Color.fromARGB(255, 221, 221, 221),
+                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+                  backgroundColor: const Color.fromARGB(255, 221, 221, 221),
                   minHeight: 50,
                 ),
               ),
               Center(
                 child: Text(
                   "${visibility.round()}km",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 28,
                     color: Color.fromARGB(255, 0, 0, 0),
                     fontWeight: FontWeight.bold,
@@ -60,7 +60,7 @@ class VisibilityBox extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 5),
+          const SizedBox(height: 5),
         ],
       ),
     );

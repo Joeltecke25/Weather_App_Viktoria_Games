@@ -32,7 +32,7 @@ class WindBox extends StatelessWidget {
               angle: (windDirectionDegree ?? 0) *
                   pi /
                   180, // Convert degrees to radians
-              child: Icon(
+              child: const Icon(
                 Icons.arrow_right_alt,
                 color: Colors.white,
                 size: 90,
@@ -42,7 +42,7 @@ class WindBox extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
+              const Row(
                 children: [
                   Icon(
                     Icons.air,
@@ -56,13 +56,13 @@ class WindBox extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Expanded(
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(
                     "$windSpeedKph km/h", // Display wind speed
-                    style: TextStyle(fontSize: 26, color: Colors.white),
+                    style: const TextStyle(fontSize: 26, color: Colors.white),
                   ),
                 ),
               ),

@@ -50,32 +50,32 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         WeatherBox(
                           futureweatherData: futureweatherData,
                         ),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         TemperatureBox(futureweatherData: futureweatherData),
                       ],
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         WindBox(futureweatherData: futureweatherData),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         HumidityBox(futureweatherData: futureweatherData),
                       ],
                     ),
-                    SizedBox(height: 10.0),
+                    const SizedBox(height: 10.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SunsetBox(futureweatherData: futureweatherData),
-                        SizedBox(width: 16),
+                        const SizedBox(width: 16),
                         VisibilityBox(futureweatherData: futureweatherData),
                       ],
                     ),
