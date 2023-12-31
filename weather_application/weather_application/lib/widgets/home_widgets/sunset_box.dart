@@ -51,7 +51,7 @@ class SunsetBox extends StatelessWidget {
             child: Icon(
               Icons.wb_sunny,
               color: Color.fromARGB(255, 71, 71, 71),
-              size: 30,
+              size: 40,
             ),
           ),
         ),
