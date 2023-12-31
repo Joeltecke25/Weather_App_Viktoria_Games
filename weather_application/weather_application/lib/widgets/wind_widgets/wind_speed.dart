@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather_application/widgets/general_widgets/build_structure_widgets.dart';
-
 
 class WindSpeed extends StatelessWidget {
   const WindSpeed({super.key});
@@ -10,13 +8,29 @@ class WindSpeed extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
       child: Container(
-        width: screenWidth - 32,
-        height: 420,
+        width: screenWidth - 62,
+        height: 230,
         decoration: BoxDecoration(
           color: const Color.fromARGB(100, 207, 207, 207),
           borderRadius: BorderRadius.circular(30),
+        ),
+        child: const Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: EdgeInsets.fromLTRB(16, 16, 0, 0),
+              child: Text(
+                'Wind Speed',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

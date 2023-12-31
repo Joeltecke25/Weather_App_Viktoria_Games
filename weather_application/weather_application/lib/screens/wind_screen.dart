@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_application/widgets/general_widgets/localization_info.dart';
 import 'package:weather_application/widgets/general_widgets/back_button.dart';
+import 'package:weather_application/widgets/wind_widgets/wind_speed.dart';
 
 class WindScreen extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
@@ -58,7 +59,7 @@ class WindScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    
+                    WindSpeed(),
                   ],
                 ),
               ],
