@@ -9,6 +9,13 @@ class WindScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    const TextStyle windTextStyle = TextStyle(
+      color: Colors.white,
+      fontSize: 40,
+      decoration: TextDecoration.none,
+    );
+
     return Scaffold(
       body: Stack(
         children: [
@@ -39,6 +46,24 @@ class WindScreen extends StatelessWidget {
               ],
             ),
           ),
+          Container(
+            alignment: Alignment.topCenter,
+            margin: const EdgeInsets.only(top: 110.0),
+            child: const Column(
+              children: [
+                Text(
+                  'Wind',
+                  style: windTextStyle,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    
+                  ],
+                ),
+              ],
+            ),
+          ), 
         ],
       ),
     );
