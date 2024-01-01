@@ -36,28 +36,25 @@ class VisibilityBox extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 25),
+          const SizedBox(height: 8),
           Stack(
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: LinearProgressIndicator(
                   value: visibility! / 12.0,
-                  valueColor: const AlwaysStoppedAnimation<Color>(
-                      Color.fromARGB(255, 71, 71, 71)),
-                  backgroundColor: const Color.fromARGB(255, 143, 143, 143),
-                  minHeight: 70,
+                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+                  backgroundColor: const Color.fromARGB(255, 221, 221, 221),
+                  minHeight: 50,
                 ),
               ),
-              Positioned.fill(
-                child: Center(
-                  child: Text(
-                    "${visibility.round()} km",
-                    style: const TextStyle(
-                      fontSize: 28,
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      fontWeight: FontWeight.bold,
-                    ),
+              Center(
+                child: Text(
+                  "${visibility.round()}km",
+                  style: const TextStyle(
+                    fontSize: 28,
+                    color: Color.fromARGB(255, 0, 0, 0),
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),

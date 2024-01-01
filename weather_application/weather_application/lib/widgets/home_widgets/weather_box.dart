@@ -10,17 +10,14 @@ class WeatherBox extends StatelessWidget {
     String? currentWeatherCondition =
         futureweatherData?['current']['condition']['text']?.toString();
 
-    // Define a mapping between weather conditions and corresponding icons
     Map<String, IconData> weatherIcons = {
       'Clear': Icons.wb_sunny,
       'Partly cloudy': Icons.wb_cloudy,
       'Cloudy': Icons.cloud,
       'Overcast': Icons.cloud_queue,
       'Mist': Icons.cloud_circle,
-      // Add more mappings as needed
     };
 
-    // Get the corresponding icon for the current weather condition
     IconData? weatherIcon = weatherIcons[currentWeatherCondition];
 
     return Container(
@@ -53,20 +50,20 @@ class WeatherBox extends StatelessWidget {
                     color: Colors.white,
                     size: 20,
                   ),
-                  const SizedBox(width: 8),
-                  const Text(
+                  SizedBox(width: 8),
+                  Text(
                     "Weather",
                     style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ],
               ),
-              const SizedBox(height: 16),
+              SizedBox(height: 16),
               Expanded(
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(
                     "$currentWeatherCondition",
-                    style: const TextStyle(fontSize: 16, color: Colors.white),
+                    style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
               ),

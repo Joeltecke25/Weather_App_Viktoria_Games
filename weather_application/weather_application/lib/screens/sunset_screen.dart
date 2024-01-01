@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:weather_application/widgets/general_widgets/localization_info.dart';
 import 'package:weather_application/widgets/general_widgets/back_button.dart';
-import 'package:weather_application/widgets/wind_widgets/wind_speed.dart';
+import 'package:weather_application/widgets/sunset_widgets/sunrise_widget.dart';
+import 'package:weather_application/widgets/sunset_widgets/sunset_widget.dart';
 
 class SunsetScreen extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
+
   const SunsetScreen({Key? key, required this.futureweatherData})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    const TextStyle windTextStyle = TextStyle(
+    const TextStyle sunsetTextStyle = TextStyle(
       color: Colors.white,
       fontSize: 40,
       decoration: TextDecoration.none,
@@ -49,18 +51,15 @@ class SunsetScreen extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter,
             margin: const EdgeInsets.only(top: 110.0),
-            child: const Column(
+            child: Column(
               children: [
                 Text(
-                  'Wind',
-                  style: windTextStyle,
+                  'Sunset',
+                  style: sunsetTextStyle,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    WindSpeed(),
-                  ],
-                ),
+                SunsetWidget(futureweatherData: futureweatherData),
+                const SizedBox(height: 8),
+                SunriseWidget(futureweatherData: futureweatherData),
               ],
             ),
           ),

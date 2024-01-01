@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
 
-class SunsetWidget extends StatelessWidget {
+class SunriseWidget extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
 
-  const SunsetWidget({Key? key, required this.futureweatherData})
+  const SunriseWidget({Key? key, required this.futureweatherData})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // Accessing sunset data from the API response
+    // Accessing sunrise data from the API response
     Map<String, dynamic>? astronomyData =
         futureweatherData?['forecast']['forecastday'][0]['astro'];
-    String? sunsetTimeString = astronomyData?['sunset'];
+    String? sunriseTimeString = astronomyData?['sunrise'];
 
     // Custom parsing method for the specific format
-    DateTime? sunsetTime;
-    if (sunsetTimeString != null) {
-      sunsetTime = parseTimeString(sunsetTimeString);
+    DateTime? sunriseTime;
+    if (sunriseTimeString != null) {
+      sunriseTime = parseTimeString(sunriseTimeString);
     }
 
-    // Check if current time is greater than sunset time
-    if (sunsetTime != null && DateTime.now().isAfter(sunsetTime)) {
-      // If yes, use the sunset time of the next day
-      sunsetTime = sunsetTime.add(Duration(days: 1));
+    // Check if current time is greater than sunrise time
+    if (sunriseTime != null && DateTime.now().isAfter(sunriseTime)) {
+      // If yes, use the sunrise time of the next day
+      sunriseTime = sunriseTime.add(Duration(days: 1));
     }
 
-    // Calculating time remaining until sunset
+    // Calculating time remaining until sunrise
     Duration timeRemaining =
-        sunsetTime?.difference(DateTime.now()) ?? const Duration();
+        sunriseTime?.difference(DateTime.now()) ?? const Duration();
 
     // Displaying hours and minutes remaining
     String remainingHours =
@@ -35,9 +35,10 @@ class SunsetWidget extends StatelessWidget {
     String remainingMinutes =
         timeRemaining.inMinutes.remainder(60).toString().padLeft(2, '0');
 
-    // Displaying the sunset hour
-    String sunsetHour = sunsetTime?.hour.toString().padLeft(2, '0') ?? '00';
-    String sunsetMinute = sunsetTime?.minute.toString().padLeft(2, '0') ?? '00';
+    // Displaying the sunrise hour
+    String sunriseHour = sunriseTime?.hour.toString().padLeft(2, '0') ?? '00';
+    String sunriseMinute =
+        sunriseTime?.minute.toString().padLeft(2, '0') ?? '00';
 
     return Container(
       height: 200,
@@ -58,13 +59,13 @@ class SunsetWidget extends StatelessWidget {
                 size: 20,
               ),
               Text(
-                'Sunset Time',
+                'Sunrise Time',
                 style: TextStyle(fontSize: 16, color: Colors.white),
               ),
             ],
           ),
           Text(
-            '$sunsetHour:$sunsetMinute',
+            '$sunriseHour:$sunriseMinute',
             style: const TextStyle(fontSize: 30, color: Colors.white),
           ),
           const SizedBox(height: 8),
