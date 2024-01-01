@@ -40,8 +40,8 @@ class HumidityBox extends StatelessWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            "$humidity%", // Display humidity
-            style: const TextStyle(fontSize: 60, color: Colors.white),
+            "$humidity%",
+            style: const TextStyle(fontSize: 50, color: Colors.white),
           ),
           const SizedBox(height: 5),
           Row(
@@ -56,7 +56,7 @@ class HumidityBox extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                "$pressureMb mb", // Display pressure
+                "$pressureMb mb",
                 style: const TextStyle(fontSize: 16, color: Colors.white),
               ),
             ],
