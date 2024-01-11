@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:weather_application/screens/sunset_screen.dart';
-//import 'package:weather_application/screens/wind_screen.dart';
+//import 'package:weather_application/screens/sunset_screen.dart';
+import 'package:weather_application/screens/wind_screen.dart';
 
 class WeatherApp extends StatefulWidget {
   const WeatherApp({super.key});
@@ -109,7 +109,7 @@ class WeatherScreenState extends State<WeatherApp> {
               ? Center(
                   child: Text(errorMessage),
                 )
-              : SunsetScreen(futureweatherData: futureweatherData),
+              : WindScreen(futureweatherData: futureweatherData),
     );
   }
 }
