@@ -40,38 +40,91 @@ class WindDirection extends StatelessWidget {
             ),
             Expanded(
               child: Center(
-                child: Container(
-                  width: 300,
-                  height: 300,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: const Color.fromARGB(255, 255, 255, 255),
-                      width: 10,
-                    ),
-                  ),
-                  child: Center(
-                    child: Container(
-                      width: 250,
-                      height: 250,
+                child: Stack(
+                  children: [
+                    Container(
+                      width: 300,
+                      height: 300,
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: const Color.fromARGB(255, 190, 190, 190),
-                            width: 5,
-                          )),
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: const Color.fromARGB(255, 255, 255, 255),
+                          width: 10,
+                        ),
+                      ),
                       child: Center(
-                        child: Transform.rotate(
-                          angle: (windDirectionDegree ?? 0) * pi / 180,
-                          child: const Icon(
-                            Icons.arrow_right_alt,
-                            color: Colors.white,
-                            size: 150,
+                        child: Container(
+                          width: 200,
+                          height: 200,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: const Color.fromARGB(255, 190, 190, 190),
+                              width: 6,
+                            ),
+                          ),
+                          child: Center(
+                            child: Transform.rotate(
+                              angle: (windDirectionDegree ?? 0) * pi / 180,
+                              child: const Icon(
+                                Icons.arrow_right_alt,
+                                color: Color.fromARGB(255, 255, 255, 255),
+                                size: 180,
+                              ),
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
+                    const Positioned(
+                      top: 14,
+                      right: 139,
+                      child: Text(
+                        'N',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    const Positioned(
+                      top: 250,
+                      right: 142,
+                      child: Text(
+                        'S',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    const Positioned(
+                      top: 132,
+                      right: 23,
+                      child: Text(
+                        'E',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    const Positioned(
+                      top: 132,
+                      left: 18,
+                      child: Text(
+                        'W',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
