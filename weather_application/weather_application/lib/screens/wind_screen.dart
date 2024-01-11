@@ -4,15 +4,13 @@ import 'package:weather_application/widgets/general_widgets/back_button.dart';
 import 'package:weather_application/widgets/wind_widgets/wind_speed.dart';
 import 'package:weather_application/widgets/wind_widgets/wind_direction.dart';
 
-
 class WindScreen extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
-  const WindScreen({Key? key, required this.futureweatherData})
-      : super(key: key);
+
+  const WindScreen({super.key, required this.futureweatherData});
 
   @override
   Widget build(BuildContext context) {
-
     const TextStyle windTextStyle = TextStyle(
       color: Colors.white,
       fontSize: 40,
@@ -52,23 +50,25 @@ class WindScreen extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter,
             margin: const EdgeInsets.only(top: 110.0),
-            child: const Column(
+            child: Column(
               children: [
-                Text(
+                const Text(
                   'Wind',
                   style: windTextStyle,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    WindSpeed(),
-                    SizedBox(height: 20,),
-                    WindDirection(),
+                    const WindSpeed(),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    WindDirection(futureweatherData: futureweatherData),
                   ],
                 ),
               ],
             ),
-          ), 
+          ),
         ],
       ),
     );

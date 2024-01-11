@@ -1,10 +1,18 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 class WindDirection extends StatelessWidget {
-  const WindDirection({super.key});
+  final Map<String, dynamic>? futureweatherData;
+
+  const WindDirection({Key? key, required this.futureweatherData})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Accessing wind speed and direction values from the API data
+    double? windDirectionDegree =
+        futureweatherData?['current']['wind_degree']?.toDouble();
+
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Padding(
@@ -52,11 +60,14 @@ class WindDirection extends StatelessWidget {
                             color: const Color.fromARGB(255, 190, 190, 190),
                             width: 5,
                           )),
-                      child: const Center(
-                        child: Icon(
-                          Icons.arrow_forward,
-                          size: 100,
-                          color: Colors.white,
+                      child: Center(
+                        child: Transform.rotate(
+                          angle: (windDirectionDegree ?? 0) * pi / 180,
+                          child: const Icon(
+                            Icons.arrow_right_alt,
+                            color: Colors.white,
+                            size: 150,
+                          ),
                         ),
                       ),
                     ),
