@@ -16,10 +16,10 @@ class WindDirection extends StatelessWidget {
           color: const Color.fromARGB(100, 207, 207, 207),
           borderRadius: BorderRadius.circular(30),
         ),
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.fromLTRB(16, 16, 0, 0),
               child: Text(
                 'Wind direction',
@@ -27,6 +27,21 @@ class WindDirection extends StatelessWidget {
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
+                ),
+              ),
+            ),
+            Expanded(
+              child: Center(
+                child: Container(
+                  width: 300,
+                  height: 300,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: const Color.fromARGB(255, 255, 255, 255),
+                      width: 10,
+                    ),
+                  ),
                 ),
               ),
             ),
