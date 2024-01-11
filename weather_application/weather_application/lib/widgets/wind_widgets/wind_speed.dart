@@ -21,10 +21,10 @@ class WindSpeed extends StatelessWidget {
           children: [
             const Padding(
               padding: EdgeInsets.fromLTRB(16, 16, 0, 0),
-              child: Row(
+              child: Column(
                 children: [
                   Text(
-                    'Wind Speed',
+                    'Wind speed',
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -43,7 +43,7 @@ class WindSpeed extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 60,
                     color: Colors.white,
-                  ),
+                  ), 
                 ),
               ),
             ),
