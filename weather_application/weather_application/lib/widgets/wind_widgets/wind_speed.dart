@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
 class WindSpeed extends StatelessWidget {
-  const WindSpeed({super.key});
+  final Map<String, dynamic>? futureweatherData;
+
+  const WindSpeed({Key? key, required this.futureweatherData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double? windSpeedKph =
+        futureweatherData?['current']['wind_kph']?.toDouble();
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
@@ -35,12 +39,12 @@ class WindSpeed extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 5),
-            const Center(
+            Center(
               child: Padding(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 child: Text(
-                  '9.2 km/h',
-                  style: TextStyle(
+                  "$windSpeedKph km/h", // Display wind speed
+                  style: const TextStyle(
                     fontSize: 60,
                     color: Colors.white,
                   ), 

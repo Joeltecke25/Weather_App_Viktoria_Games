@@ -59,7 +59,7 @@ class WindScreen extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const WindSpeed(),
+                    WindSpeed(futureweatherData: futureweatherData),
                     const SizedBox(
                       height: 20,
                     ),
