@@ -47,11 +47,11 @@ class WindSpeed extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 12),
             Center(
               child: Container(
                 width: screenWidth - 150,
-                height: 10,
+                height: 15,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   gradient: const LinearGradient(
@@ -66,6 +66,12 @@ class WindSpeed extends StatelessWidget {
                     ],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
+                  ),
+                ),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
                   ),
                 ),
               ),
