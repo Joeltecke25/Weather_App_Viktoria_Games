@@ -16,10 +16,10 @@ class WindSpeed extends StatelessWidget {
           color: const Color.fromARGB(100, 207, 207, 207),
           borderRadius: BorderRadius.circular(30),
         ),
-        child: const Column(
+        child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
+            const Padding(
               padding: EdgeInsets.fromLTRB(16, 16, 0, 0),
               child: Row(
                 children: [
@@ -30,10 +30,12 @@ class WindSpeed extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
-                  ),                ],
+                  ),
+                ],
               ),
             ),
-            Center(
+            const SizedBox(height: 5),
+            const Center(
               child: Padding(
                 padding: EdgeInsets.all(16),
                 child: Text(
@@ -41,6 +43,29 @@ class WindSpeed extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 60,
                     color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 5),
+            Center(
+              child: Container(
+                width: screenWidth - 150,
+                height: 10,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  gradient: const LinearGradient(
+                    colors: [
+                      Colors.red,
+                      Colors.orange,
+                      Colors.yellow,
+                      Colors.green,
+                      Colors.blue,
+                      Colors.indigo,
+                      Colors.purple,
+                    ],
+                    begin: Alignment.centerLeft,
+                    end: Alignment.centerRight,
                   ),
                 ),
               ),
