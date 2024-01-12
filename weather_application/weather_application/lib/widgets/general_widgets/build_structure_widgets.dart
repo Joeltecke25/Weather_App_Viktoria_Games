@@ -139,3 +139,83 @@ Widget buildRowWithIconAndText(IconData icon, String text) {
       ),
     );
   }
+
+  Widget buildTextWithSeparatorRight(
+    String text, IconData icon, String additionalText) {
+  return Row(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            text,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Icon(
+            icon,
+            color: Colors.white,
+            size: 50,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            additionalText,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+      const SizedBox(width: 20),
+      Container(
+        height: 100,
+        width: 1,
+        color: Colors.white,
+      ),
+    ],
+  );
+}
+
+Widget buildTextWithoutSeparatorRight(
+    String text, IconData icon, String additionalText) {
+  return Row(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Text(
+            text,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Icon(
+            icon,
+            color: Colors.white,
+            size: 50,
+          ),
+          const SizedBox(height: 10),
+          Text(
+            additionalText,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    ],
+  );
+}
