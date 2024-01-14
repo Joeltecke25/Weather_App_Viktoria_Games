@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_application/screens/weather_screen.dart';
 import 'package:weather_application/screens/temperature_screen.dart';
+import 'package:weather_application/screens/wind_screen.dart';
 import 'package:weather_application/widgets/home_widgets/home_location_info.dart';
 import 'package:weather_application/widgets/home_widgets/temperature_box.dart';
 import 'package:weather_application/widgets/home_widgets/weather_box.dart';
@@ -91,7 +92,20 @@ class HomeScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        WindBox(futureweatherData: futureweatherData),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => WindScreen(
+                                    futureweatherData: futureweatherData),
+                              ),
+                            );
+                          },
+                          child: WindBox(
+                            futureweatherData: futureweatherData,
+                          ),
+                        ),
                         const SizedBox(width: 16),
                         HumidityBox(futureweatherData: futureweatherData),
                       ],
