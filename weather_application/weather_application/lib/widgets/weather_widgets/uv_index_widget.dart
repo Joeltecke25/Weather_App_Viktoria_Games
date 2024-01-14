@@ -8,6 +8,9 @@ class UvIndexWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
+    // Accessing UV index data from the API response
+    int? uvIndex = futureweatherData?['current']['uv'].toInt();
+
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
       child: Container(
@@ -19,8 +22,8 @@ class UvIndexWidget extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            const Padding(
-              padding: EdgeInsets.fromLTRB(25, 16, 0, 0),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(25, 16, 0, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -34,7 +37,7 @@ class UvIndexWidget extends StatelessWidget {
                   ),
                   SizedBox(height: 4),
                   Text(
-                    "6",
+                    uvIndex?.toString() ?? '', // Display UV index value
                     style: TextStyle(
                       fontSize: 60,
                       color: Colors.white,
@@ -51,7 +54,7 @@ class UvIndexWidget extends StatelessWidget {
                 height: 20,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  gradient: const LinearGradient(
+                  gradient: LinearGradient(
                     colors: [
                       Colors.green,
                       Colors.yellow,
@@ -65,7 +68,7 @@ class UvIndexWidget extends StatelessWidget {
                 ),
               ),
             ),
-            const Positioned(
+            Positioned(
               top: 46,
               right: 220,
               child: Icon(
