@@ -34,17 +34,21 @@ class SettingsScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              child: const Row(
-                children: [
-                  GoBackButtonBlue(),
-                  Text(
-                    'Back',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 76, 196, 190),
-                      fontSize: 20,
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Row(
+                  children: [
+                    GoBackButtonBlue(futureweatherData: futureweatherData),
+                    const SizedBox(width: 8),
+                    const Text(
+                      'Back',
+                      style: TextStyle(
+                        color: Color.fromARGB(255, 76, 196, 190),
+                        fontSize: 20,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
