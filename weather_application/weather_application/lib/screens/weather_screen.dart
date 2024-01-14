@@ -42,7 +42,7 @@ class WeatherScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    GoBackButton(),
+                    GoBackButton(futureweatherData: futureweatherData),
                   ],
                 ),
               ],
