@@ -56,10 +56,10 @@ class TempScreen extends StatelessWidget {
               alignment: Alignment.topCenter,
               children: [
                 LocationInfoWidget(futureweatherData: futureweatherData),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    GoBackButton(),
+                    GoBackButton(futureweatherData: futureweatherData),
                   ],
                 ),
               ],
