@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:weather_application/widgets/general_widgets/localization_info.dart';
 import 'package:weather_application/widgets/general_widgets/back_button.dart';
 import 'package:weather_application/widgets/visibility_widgets/moon_illumination_widget.dart';
+import 'package:weather_application/widgets/visibility_widgets/tips_widget.dart';
 import 'package:weather_application/widgets/visibility_widgets/visibility_widget.dart';
 
 class VisibilityScreen extends StatelessWidget {
@@ -60,6 +61,7 @@ class VisibilityScreen extends StatelessWidget {
                   children: [
                     VisibilityWidget(futureweatherData: futureweatherData),
                     MoonWidget(futureweatherData: futureweatherData),
+                    const TipsWidget()
                   ],
                 ),
               ],
