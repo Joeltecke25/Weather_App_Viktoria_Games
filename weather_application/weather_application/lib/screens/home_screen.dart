@@ -5,6 +5,7 @@ import 'package:weather_application/screens/temperature_screen.dart';
 import 'package:weather_application/screens/wind_screen.dart';
 import 'package:weather_application/screens/sunset_screen.dart';
 import 'package:weather_application/screens/humidity_screen.dart';
+import 'package:weather_application/screens/settings_screen.dart';
 import 'package:weather_application/widgets/home_widgets/home_location_info.dart';
 import 'package:weather_application/widgets/home_widgets/temperature_box.dart';
 import 'package:weather_application/widgets/home_widgets/weather_box.dart';
@@ -37,9 +38,21 @@ class HomeScreen extends StatelessWidget {
             Positioned(
               top: 20.0,
               right: 20.0,
-              child: IconButton(
-                icon: const Icon(Icons.settings, color: Colors.white),
-                onPressed: () {},
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SettingsScreen(
+                        futureweatherData: futureweatherData,
+                      ),
+                    ),
+                  );
+                },
+                child: const Icon(
+                  Icons.settings,
+                  color: Colors.white
+                ),
               ),
             ),
             Positioned(
