@@ -4,6 +4,7 @@ import 'package:weather_application/screens/weather_screen.dart';
 import 'package:weather_application/screens/temperature_screen.dart';
 import 'package:weather_application/screens/wind_screen.dart';
 import 'package:weather_application/screens/sunset_screen.dart';
+import 'package:weather_application/screens/humidity_screen.dart';
 import 'package:weather_application/widgets/home_widgets/home_location_info.dart';
 import 'package:weather_application/widgets/home_widgets/temperature_box.dart';
 import 'package:weather_application/widgets/home_widgets/weather_box.dart';
@@ -109,7 +110,20 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 16),
-                        HumidityBox(futureweatherData: futureweatherData),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => HumidityScreen(
+                                    futureweatherData: futureweatherData),
+                              ),
+                            );
+                          },
+                          child: HumidityBox(
+                            futureweatherData: futureweatherData,
+                          ),
+                        ),
                       ],
                     ),
                     const SizedBox(height: 10.0),
