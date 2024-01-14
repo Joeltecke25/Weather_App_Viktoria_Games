@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather_application/widgets/general_widgets/localization_info.dart';
 import 'package:weather_application/widgets/general_widgets/back_button.dart';
+import 'package:weather_application/widgets/visibility_widgets/visibility_widget.dart';
 
 class VisibilityScreen extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
@@ -47,16 +48,16 @@ class VisibilityScreen extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter,
             margin: const EdgeInsets.only(top: 110.0),
-            child: Column(
+            child: const Column(
               children: [
-                const Text(
+                Text(
                   'Visibility',
                   style: visibilityTextStyle,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    
+                    VisibilityWidget(),
                   ],
                 ),
               ],
