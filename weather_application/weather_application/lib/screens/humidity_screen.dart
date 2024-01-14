@@ -60,7 +60,7 @@ class HumidityScreen extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    
+                    HumidityWidget(futureweatherData: futureweatherData),
                   ],
                 ),
               ],
