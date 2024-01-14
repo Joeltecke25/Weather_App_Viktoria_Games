@@ -66,8 +66,12 @@ class HumidityScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         RainWidget(futureweatherData: futureweatherData),
-                  ],
+                        const SizedBox(width: 20),
+                        PrecipitationWidget(
+                            futureweatherData: futureweatherData),
+                      ],
                     ),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ],
