@@ -111,7 +111,7 @@ class WeatherScreenState extends State<WeatherApp> {
               ? Center(
                   child: Text(errorMessage),
                 )
-              : SettingsScreen(futureweatherData: futureweatherData),
+              : VisibilityScreen(futureweatherData: futureweatherData),
     );
   }
 }

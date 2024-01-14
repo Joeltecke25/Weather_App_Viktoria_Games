@@ -48,16 +48,16 @@ class VisibilityScreen extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter,
             margin: const EdgeInsets.only(top: 110.0),
-            child: const Column(
+            child: Column(
               children: [
-                Text(
+                const Text(
                   'Visibility',
                   style: visibilityTextStyle,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    VisibilityWidget(),
+                    VisibilityWidget(futureweatherData: futureweatherData),
                   ],
                 ),
               ],
