@@ -35,7 +35,7 @@ class WeatherScreen extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.all(16.0),
-            child: const Stack(
+            child: Stack(
               alignment: Alignment.topCenter,
               children: [
                 LocationInfoWidget(futureweatherData: futureweatherData),
@@ -51,7 +51,7 @@ class WeatherScreen extends StatelessWidget {
           Container(
             alignment: Alignment.topCenter,
             margin: const EdgeInsets.only(top: 110.0),
-            child: const Column(
+            child: Column(
               children: [
                 Text(
                   'Weather',
@@ -62,7 +62,7 @@ class WeatherScreen extends StatelessWidget {
                   children: [
                     HourForecastWidget(), //Falta cambio con la API
                     UvIndexWidget(),
-                    CloudCoverWidget(),
+                    CloudCoverWidget(futureweatherData: futureweatherData),
                     DayForecast(),
                   ],
                 ),

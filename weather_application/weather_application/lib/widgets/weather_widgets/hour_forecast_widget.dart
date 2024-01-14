@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class HourForecastWidget extends StatelessWidget {
-  const HourForecastWidget({super.key});
+  final Map<String, dynamic>? futureweatherData;
+  const HourForecastWidget({super.key, required this.futureweatherData});
 
   @override
   Widget build(BuildContext context) {
@@ -67,13 +68,15 @@ class HourForecastWidget extends StatelessWidget {
   Icon getWeatherIcon(String condition) {
     switch (condition) {
       case 'Sunny':
-        return const Icon(Icons.wb_sunny_outlined, size: 40, color: Colors.white);
+        return const Icon(Icons.wb_sunny_outlined,
+            size: 40, color: Colors.white);
       case 'Cloudy':
         return const Icon(Icons.cloud_outlined, size: 40, color: Colors.white);
       case 'Rainy':
         return const Icon(Icons.grain_outlined, size: 40, color: Colors.white);
       case 'Snowy':
-        return const Icon(Icons.ac_unit_outlined, size: 40, color: Colors.white);
+        return const Icon(Icons.ac_unit_outlined,
+            size: 40, color: Colors.white);
       default:
         return const Icon(Icons.help, size: 40, color: Colors.black);
     }

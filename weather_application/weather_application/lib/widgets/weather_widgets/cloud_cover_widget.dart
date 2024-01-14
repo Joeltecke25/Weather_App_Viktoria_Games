@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CloudCoverWidget extends StatelessWidget {
-  const CloudCoverWidget({super.key});
+  final Map<String, dynamic>? futureweatherData;
+  const CloudCoverWidget({super.key, required this.futureweatherData});
 
   @override
   Widget build(BuildContext context) {
