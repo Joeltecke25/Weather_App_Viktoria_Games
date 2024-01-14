@@ -44,20 +44,33 @@ class SunriseWidget extends StatelessWidget {
       height: 200,
       width: 200,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(100, 207, 207, 207),
+        gradient: LinearGradient(
+          colors: [Colors.blue, Colors.orange],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
         borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: Offset(0, 3),
+          ),
+        ],
       ),
       padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Row(
+          Row(
             children: [
               Icon(
                 Icons.wb_twilight,
                 color: Colors.white,
                 size: 20,
               ),
+              const SizedBox(width: 8),
               Text(
                 'Sunrise Time',
                 style: TextStyle(fontSize: 16, color: Colors.white),
