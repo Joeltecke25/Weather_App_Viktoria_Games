@@ -60,10 +60,12 @@ class WeatherScreen extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    HourForecastWidget(), //Falta cambio con la API
-                    UvIndexWidget(),
+                    HourForecastWidget(
+                        futureweatherData:
+                            futureweatherData), //Falta cambio con la API
+                    UvIndexWidget(futureweatherData: futureweatherData),
                     CloudCoverWidget(futureweatherData: futureweatherData),
-                    DayForecast(),
+                    DayForecast(futureweatherData: futureweatherData),
                   ],
                 ),
               ],

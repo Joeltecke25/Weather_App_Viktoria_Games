@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
 
 class HourForecastWidget extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
@@ -30,20 +29,27 @@ class HourForecastWidget extends StatelessWidget {
   }
 
   Widget buildHourColumn(int index) {
-    Random random = Random();
-    List<String> conditions = ['Sunny', 'Cloudy', 'Rainy', 'Snowy'];
-    String randomCondition = conditions[random.nextInt(conditions.length)];
-    int randomTemperature = random.nextInt(15) + 5;
+    List<dynamic>? hourlyForecast =
+        futureweatherData?['forecast']['forecastday'][0]['hour'];
 
-    DateTime now = DateTime.now();
-    DateTime nextHour = now.add(Duration(hours: index));
-    String hour = '${nextHour.hour}:00';
+    if (hourlyForecast == null || hourlyForecast.isEmpty) {
+      return Container();
+    }
+
+    Map<String, dynamic> hourData = hourlyForecast[index];
+    String hour = hourData['time'] ?? '';
+
+    DateTime hourDateTime = DateTime.parse(hour);
+    String formattedHour = '${hourDateTime.hour}:00';
+
+    String condition = hourData['condition']['text'] ?? '';
+    double temperature = (hourData['temp_c'] as num?)?.toDouble() ?? 0;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          index == 0 ? 'Now' : hour,
+          index == 0 ? 'Now' : formattedHour,
           style: const TextStyle(
             color: Colors.white,
             fontSize: 18,
@@ -51,10 +57,10 @@ class HourForecastWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        getWeatherIcon(randomCondition),
+        getWeatherIcon(condition),
         const SizedBox(height: 8),
         Text(
-          '$randomTemperatureº',
+          '$temperatureº',
           style: const TextStyle(
             color: Colors.white,
             fontSize: 16,

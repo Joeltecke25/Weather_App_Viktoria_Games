@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class UvIndexWidget extends StatelessWidget {
-  const UvIndexWidget({super.key});
+  final Map<String, dynamic>? futureweatherData;
+  const UvIndexWidget({super.key, required this.futureweatherData});
 
   @override
   Widget build(BuildContext context) {
