@@ -7,6 +7,8 @@ class CloudCoverWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
+    double? cloudCoverPercentage =
+        futureweatherData?['current']['cloud'].toDouble();
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -19,7 +21,7 @@ class CloudCoverWidget extends StatelessWidget {
         ),
         child: Stack(
           children: [
-            const Padding(
+            Padding(
               padding: EdgeInsets.fromLTRB(25, 16, 0, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +36,7 @@ class CloudCoverWidget extends StatelessWidget {
                   ),
                   SizedBox(height: 16),
                   Text(
-                    "40%",
+                    "$cloudCoverPercentage%",
                     style: TextStyle(
                       fontSize: 38,
                       color: Colors.white,
