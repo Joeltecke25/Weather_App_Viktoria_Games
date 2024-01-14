@@ -72,6 +72,7 @@ class HumidityScreen extends StatelessWidget {
                       ],
                     ),
                     const SizedBox(height: 10),
+                    PressureWidget(futureweatherData: futureweatherData)
                   ],
                 ),
               ],
