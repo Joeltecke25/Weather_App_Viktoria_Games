@@ -39,10 +39,10 @@ class SunsetScreen extends StatelessWidget {
               alignment: Alignment.topCenter,
               children: [
                 LocationInfoWidget(futureweatherData: futureweatherData),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    GoBackButton(),
+                    GoBackButton(futureweatherData: futureweatherData),
                   ],
                 ),
               ],
@@ -53,7 +53,7 @@ class SunsetScreen extends StatelessWidget {
             margin: const EdgeInsets.only(top: 110.0),
             child: Column(
               children: [
-                Text(
+                const Text(
                   'Sunset',
                   style: sunsetTextStyle,
                 ),
