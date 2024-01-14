@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_application/screens/visibility_screen.dart';
 import 'package:weather_application/screens/weather_screen.dart';
 import 'package:weather_application/screens/temperature_screen.dart';
 import 'package:weather_application/screens/wind_screen.dart';
@@ -130,7 +131,20 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 16),
-                        VisibilityBox(futureweatherData: futureweatherData),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => VisibilityScreen(
+                                    futureweatherData: futureweatherData),
+                              ),
+                            );
+                          },
+                          child: VisibilityBox(
+                            futureweatherData: futureweatherData,
+                          ),
+                        ),
                       ],
                     ),
                   ],
