@@ -49,17 +49,14 @@ class HomeScreen extends StatelessWidget {
                     ),
                   );
                 },
-                child: const Icon(
-                  Icons.settings,
-                  color: Colors.white
-                ),
+                child: const Icon(Icons.settings, color: Colors.white),
               ),
             ),
             Positioned(
               top: 40.0,
               width: MediaQuery.of(context).size.width,
               height: 150,
-              child: const LocationInfoHomeWidget(),
+              child: LocationInfoHomeWidget(futureweatherData: futureweatherData),
             ),
             Positioned(
               top: 200.0,

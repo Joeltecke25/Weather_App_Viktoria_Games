@@ -1,29 +1,38 @@
 import 'package:flutter/material.dart';
 
 class LocationInfoHomeWidget extends StatelessWidget {
-  const LocationInfoHomeWidget({super.key});
+  final Map<String, dynamic>? futureweatherData;
+
+  const LocationInfoHomeWidget({
+    Key? key,
+    required this.futureweatherData,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String? namecity = futureweatherData?['location']['name']?.toString();
+    String? namecountry = futureweatherData?['location']['country']?.toString();
+    String? currentHour =
+        futureweatherData?['location']['localtime']?.toString();
     return Container(
       width: 300,
       height: 100,
       padding: const EdgeInsets.all(16.0),
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'Barcelona',
-            style: TextStyle(
+            '$namecity',
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 50,
               decoration: TextDecoration.none,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
-            'Spain | 14:33',
-            style: TextStyle(
+            '$namecountry | $currentHour',
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 28,
               decoration: TextDecoration.none,
