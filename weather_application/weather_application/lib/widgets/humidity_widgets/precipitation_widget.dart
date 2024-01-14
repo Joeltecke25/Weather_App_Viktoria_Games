@@ -8,7 +8,8 @@ class PrecipitationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double? totalPrecipitationMM = futureweatherData?['forecast']['forecastday'][0]['day']['totalprecip_mm'];
+    double? totalPrecipitationMM = futureweatherData?['forecast']['forecastday']
+        [0]['day']['totalprecip_mm'];
     return Container(
       height: 180,
       width: 180,

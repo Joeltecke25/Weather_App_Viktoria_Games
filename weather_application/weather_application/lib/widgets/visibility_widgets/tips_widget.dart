@@ -8,8 +8,7 @@ class TipsWidget extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Padding(
-      padding:
-          const EdgeInsets.fromLTRB(5, 5, 5, 0),
+      padding: const EdgeInsets.fromLTRB(5, 5, 5, 0),
       child: Container(
         width: screenWidth - 62,
         height: 320,

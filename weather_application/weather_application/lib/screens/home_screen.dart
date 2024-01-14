@@ -56,7 +56,8 @@ class HomeScreen extends StatelessWidget {
               top: 40.0,
               width: MediaQuery.of(context).size.width,
               height: 150,
-              child: LocationInfoHomeWidget(futureweatherData: futureweatherData),
+              child:
+                  LocationInfoHomeWidget(futureweatherData: futureweatherData),
             ),
             Positioned(
               top: 200.0,

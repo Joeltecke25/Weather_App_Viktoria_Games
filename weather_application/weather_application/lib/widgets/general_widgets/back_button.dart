@@ -4,7 +4,8 @@ import 'package:weather_application/screens/home_screen.dart';
 class GoBackButton extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
 
-  const GoBackButton({Key? key, required this.futureweatherData}) : super(key: key);
+  const GoBackButton({Key? key, required this.futureweatherData})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,8 @@ class GoBackButton extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => HomeScreen(futureweatherData: futureweatherData),
+                builder: (context) =>
+                    HomeScreen(futureweatherData: futureweatherData),
               ),
             );
           },

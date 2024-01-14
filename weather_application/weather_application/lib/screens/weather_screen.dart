@@ -53,7 +53,7 @@ class WeatherScreen extends StatelessWidget {
             margin: const EdgeInsets.only(top: 110.0),
             child: Column(
               children: [
-                Text(
+                const Text(
                   'Weather',
                   style: weatherTextStyle,
                 ),

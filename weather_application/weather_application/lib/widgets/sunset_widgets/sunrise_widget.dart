@@ -22,7 +22,7 @@ class SunriseWidget extends StatelessWidget {
     // Check if current time is greater than sunrise time
     if (sunriseTime != null && DateTime.now().isAfter(sunriseTime)) {
       // If yes, use the sunrise time of the next day
-      sunriseTime = sunriseTime.add(Duration(days: 1));
+      sunriseTime = sunriseTime.add(const Duration(days: 1));
     }
 
     // Calculating time remaining until sunrise
@@ -44,7 +44,7 @@ class SunriseWidget extends StatelessWidget {
       height: 200,
       width: 200,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           colors: [Colors.blue, Colors.orange],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -55,7 +55,7 @@ class SunriseWidget extends StatelessWidget {
             color: Colors.black.withOpacity(0.2),
             spreadRadius: 1,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           ),
         ],
       ),
@@ -63,14 +63,14 @@ class SunriseWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             children: [
               Icon(
                 Icons.wb_twilight,
                 color: Colors.white,
                 size: 20,
               ),
-              const SizedBox(width: 8),
+              SizedBox(width: 8),
               Text(
                 'Sunrise Time',
                 style: TextStyle(fontSize: 16, color: Colors.white),
@@ -109,6 +109,7 @@ class SunriseWidget extends StatelessWidget {
       return DateTime(DateTime.now().year, DateTime.now().month,
           DateTime.now().day, hours, minutes);
     } catch (e) {
+      // ignore: avoid_print
       print("Error parsing time string: $e");
       return null;
     }

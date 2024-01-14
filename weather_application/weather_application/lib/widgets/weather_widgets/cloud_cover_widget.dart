@@ -22,11 +22,11 @@ class CloudCoverWidget extends StatelessWidget {
         child: Stack(
           children: [
             Padding(
-              padding: EdgeInsets.fromLTRB(25, 16, 0, 0),
+              padding: const EdgeInsets.fromLTRB(25, 16, 0, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Cloud Cover Percentage',
                     style: TextStyle(
                       fontSize: 16,
@@ -34,10 +34,10 @@ class CloudCoverWidget extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 16),
+                  const SizedBox(height: 16),
                   Text(
                     "$cloudCoverPercentage%",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 38,
                       color: Colors.white,
                     ),

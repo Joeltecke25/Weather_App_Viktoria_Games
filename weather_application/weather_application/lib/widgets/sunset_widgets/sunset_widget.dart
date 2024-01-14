@@ -22,7 +22,7 @@ class SunsetWidget extends StatelessWidget {
     // Check if current time is greater than sunset time
     if (sunsetTime != null && DateTime.now().isAfter(sunsetTime)) {
       // If yes, use the sunset time of the next day
-      sunsetTime = sunsetTime.add(Duration(days: 1));
+      sunsetTime = sunsetTime.add(const Duration(days: 1));
     }
 
     // Calculating time remaining until sunset
@@ -43,7 +43,7 @@ class SunsetWidget extends StatelessWidget {
       height: 200,
       width: 200,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           colors: [Colors.orange, Colors.deepPurple],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -62,14 +62,14 @@ class SunsetWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             children: [
               Icon(
                 Icons.wb_twilight,
                 color: Colors.white,
                 size: 20,
               ),
-              const SizedBox(width: 8),
+              SizedBox(width: 8),
               Text(
                 'Sunset Time',
                 style: TextStyle(fontSize: 16, color: Colors.white),
@@ -108,6 +108,7 @@ class SunsetWidget extends StatelessWidget {
       return DateTime(DateTime.now().year, DateTime.now().month,
           DateTime.now().day, hours, minutes);
     } catch (e) {
+      // ignore: avoid_print
       print("Error parsing time string: $e");
       return null;
     }

@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class WindSpeed extends StatelessWidget {
   final Map<String, dynamic>? futureweatherData;
 
-  const WindSpeed({Key? key, required this.futureweatherData}) : super(key: key);
+  const WindSpeed({Key? key, required this.futureweatherData})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +48,7 @@ class WindSpeed extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 60,
                     color: Colors.white,
-                  ), 
+                  ),
                 ),
               ),
             ),

@@ -7,7 +7,8 @@ class MoonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-    int? moonIllumination = futureweatherData?['forecast']['forecastday'][0]['astro']['moon_illumination'];
+    int? moonIllumination = futureweatherData?['forecast']['forecastday'][0]
+        ['astro']['moon_illumination'];
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),

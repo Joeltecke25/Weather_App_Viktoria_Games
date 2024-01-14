@@ -50,20 +50,20 @@ class WeatherBox extends StatelessWidget {
                     color: Colors.white,
                     size: 20,
                   ),
-                  SizedBox(width: 8),
-                  Text(
+                  const SizedBox(width: 8),
+                  const Text(
                     "Weather",
                     style: TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ],
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Expanded(
                 child: Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(
                     "$currentWeatherCondition",
-                    style: TextStyle(fontSize: 16, color: Colors.white),
+                    style: const TextStyle(fontSize: 16, color: Colors.white),
                   ),
                 ),
               ),

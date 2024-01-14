@@ -27,7 +27,7 @@ class UvIndexWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'UV index',
                     style: TextStyle(
                       fontSize: 16,
@@ -35,10 +35,10 @@ class UvIndexWidget extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     uvIndex?.toString() ?? '', // Display UV index value
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 60,
                       color: Colors.white,
                     ),
@@ -54,7 +54,7 @@ class UvIndexWidget extends StatelessWidget {
                 height: 20,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     colors: [
                       Colors.green,
                       Colors.yellow,
@@ -68,7 +68,7 @@ class UvIndexWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned(
+            const Positioned(
               top: 46,
               right: 220,
               child: Icon(
