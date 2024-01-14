@@ -9,11 +9,12 @@ class DayForecast extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
 
-    List<Map<String, dynamic>>? forecastDays =
-        futureweatherData?['forecast']['forecastday'];
+    List<Map<String, dynamic>>? forecastDays = futureweatherData?['forecast']
+            ['forecastday']
+        ?.cast<Map<String, dynamic>>();
 
-    String? tomorrowDay = forecastDays?[1]['date_epoch'];
-    String? afterTomorrowDay = forecastDays?[2]['date_epoch'];
+    String? tomorrowDay = forecastDays?[1]['date_epoch']?.toString();
+    String? afterTomorrowDay = forecastDays?[2]['date_epoch']?.toString();
 
     String getDayOfWeek(String? epochTime) {
       if (epochTime != null) {

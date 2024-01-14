@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_application/screens/weather_screen.dart';
 import 'package:weather_application/widgets/home_widgets/home_location_info.dart';
 import 'package:weather_application/widgets/home_widgets/temperature_box.dart';
 import 'package:weather_application/widgets/home_widgets/weather_box.dart';
@@ -54,8 +55,19 @@ class HomeScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        WeatherBox(
-                          futureweatherData: futureweatherData,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => WeatherScreen(
+                                    futureweatherData: futureweatherData),
+                              ),
+                            );
+                          },
+                          child: WeatherBox(
+                            futureweatherData: futureweatherData,
+                          ),
                         ),
                         const SizedBox(width: 16),
                         TemperatureBox(futureweatherData: futureweatherData),
